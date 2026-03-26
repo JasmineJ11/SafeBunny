@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://b56mfdkim1gbm" path="res://scences/killzone.tscn" id="5_b174u"]
 [ext_resource type="PackedScene" uid="uid://f0ft3ft1vw76" path="res://scences/slime.tscn" id="6_yru2q"]
 [ext_resource type="FontFile" uid="uid://jgv88f60q8tg" path="res://assets/fonts/PixelOperator8.ttf" id="7_cho2i"]
+[ext_resource type="Texture2D" uid="uid://cmm4w7qu5mwvk" path="res://assets/sprites/inventory_Light_example_2.png" id="11_nn1ya"]
+[ext_resource type="Texture2D" uid="uid://c3w7vxe3k5sce" path="res://assets/sprites/ButtonYes.tres" id="12_ua0fu"]
+[ext_resource type="Script" uid="uid://dtuad0s2gjjca" path="res://scripts/yes.gd" id="13_cxnw8"]
+[ext_resource type="Texture2D" uid="uid://bgtidpfo30txk" path="res://assets/sprites/CowFriend.tres" id="13_wctid"]
+[ext_resource type="PackedScene" uid="uid://vcks7bg5w6k8" path="res://scences/treasure_chest.tscn" id="15_4jcax"]
+[ext_resource type="Texture2D" uid="uid://di1eyt36grkey" path="res://assets/sprites/ButtonNo.tres" id="15_74n68"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b174u"]
 texture = ExtResource("2_jx3ei")
@@ -346,6 +352,9 @@ texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ua0fu"]
+texture = ExtResource("11_nn1ya")
+
 [node name="Game" type="Node2D" unique_id=1205654372]
 
 [node name="GameManager" type="Node" parent="." unique_id=151145822]
@@ -392,11 +401,17 @@ position = Vector2(135, -145)
 [node name="Coin4" parent="Coins" unique_id=1209603503 instance=ExtResource("4_cfxbr")]
 position = Vector2(117, -145)
 
+[node name="Coin6" parent="Coins" unique_id=528288224 instance=ExtResource("4_cfxbr")]
+position = Vector2(446, -120)
+
 [node name="Coin7" parent="Coins" unique_id=1183478606 instance=ExtResource("4_cfxbr")]
 position = Vector2(152, -146)
 
-[node name="Coin6" parent="Coins" unique_id=528288224 instance=ExtResource("4_cfxbr")]
-position = Vector2(446, -120)
+[node name="Coin8" parent="Coins" unique_id=1326835380 instance=ExtResource("4_cfxbr")]
+position = Vector2(287, -42)
+
+[node name="Coin9" parent="Coins" unique_id=213799499 instance=ExtResource("4_cfxbr")]
+position = Vector2(330, -42)
 
 [node name="Platforms" type="Node" parent="." unique_id=1593950]
 
@@ -447,7 +462,7 @@ text = "You made it!"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2129855071]
 
-[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1795609749]
+[node name="ScorePanel" type="Panel" parent="CanvasLayer" unique_id=1795609749]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -457,7 +472,7 @@ offset_bottom = 97.10959
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_nn1ya")
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/Panel" unique_id=512927452]
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/ScorePanel" unique_id=512927452]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 18.5
@@ -469,3 +484,132 @@ theme_override_fonts/font = ExtResource("2_lvua1")
 theme_override_font_sizes/font_size = 19
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="SMSPanel" type="Panel" parent="CanvasLayer" unique_id=1095821213]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -444.75507
+offset_top = -143.375
+offset_right = 444.75507
+offset_bottom = 143.375
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ua0fu")
+
+[node name="InviteLabel" type="Label" parent="CanvasLayer/SMSPanel" unique_id=85773547]
+layout_mode = 0
+offset_left = 57.755066
+offset_top = 99.375
+offset_right = 834.75507
+offset_bottom = 187.375
+theme_override_fonts/font = ExtResource("7_cho2i")
+theme_override_font_sizes/font_size = 26
+text = "It's March 25th! You're coming to my birthday party, right? 🐾🎂✨"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/SMSPanel" unique_id=1683679407]
+layout_mode = 0
+offset_left = 342.75507
+offset_top = 203.375
+offset_right = 419.75507
+offset_bottom = 250.375
+theme_override_font_sizes/font_size = 25
+flat = true
+
+[node name="Yes" type="TextureRect" parent="CanvasLayer/SMSPanel/Button" unique_id=704885512]
+layout_mode = 0
+offset_left = 37.0
+offset_top = -3.0
+offset_right = 112.0
+offset_bottom = 41.0
+texture = ExtResource("12_ua0fu")
+stretch_mode = 6
+script = ExtResource("13_cxnw8")
+
+[node name="FriendCow" type="TextureRect" parent="CanvasLayer/SMSPanel" unique_id=48928821]
+layout_mode = 0
+offset_left = 109.755066
+offset_top = 165.375
+offset_right = 192.75507
+offset_bottom = 248.375
+texture = ExtResource("13_wctid")
+
+[node name="ChestPanel" type="Panel" parent="CanvasLayer" unique_id=258346170]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -444.75507
+offset_top = -143.375
+offset_right = 444.75507
+offset_bottom = 143.375
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ua0fu")
+
+[node name="ChestLabel" type="Label" parent="CanvasLayer/ChestPanel" unique_id=525029671]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 57.755066
+offset_top = 99.375
+offset_right = 834.75507
+offset_bottom = 187.375
+theme_override_fonts/font = ExtResource("7_cho2i")
+theme_override_font_sizes/font_size = 26
+text = "🎉 Congratulations! You won €99,999!
+💳 Tap✅to claim your reward!"
+autowrap_mode = 2
+
+[node name="YesButton" type="Button" parent="CanvasLayer/ChestPanel" unique_id=1827645613]
+layout_mode = 0
+offset_left = 293.75507
+offset_top = 205.375
+offset_right = 370.75507
+offset_bottom = 252.375
+theme_override_font_sizes/font_size = 25
+flat = true
+
+[node name="Yes" type="TextureRect" parent="CanvasLayer/ChestPanel/YesButton" unique_id=366926599]
+layout_mode = 0
+offset_left = -12.0
+offset_top = 3.0
+offset_right = 63.0
+offset_bottom = 47.0
+texture = ExtResource("12_ua0fu")
+stretch_mode = 6
+script = ExtResource("13_cxnw8")
+
+[node name="NoButton" type="Button" parent="CanvasLayer/ChestPanel" unique_id=431322608]
+layout_mode = 0
+offset_left = 502.75507
+offset_top = 211.375
+offset_right = 579.75507
+offset_bottom = 258.375
+theme_override_font_sizes/font_size = 25
+flat = true
+
+[node name="No" type="TextureRect" parent="CanvasLayer/ChestPanel/NoButton" unique_id=2981199]
+layout_mode = 0
+offset_left = 18.0
+offset_right = 58.0
+offset_bottom = 40.0
+texture = ExtResource("15_74n68")
+stretch_mode = 6
+script = ExtResource("13_cxnw8")
+
+[node name="TreasureChests" type="Node" parent="." unique_id=677872652]
+
+[node name="TreasureChest" parent="TreasureChests" unique_id=139621350 instance=ExtResource("15_4jcax")]
+process_mode = 3
+position = Vector2(148, -1)
+collision_mask = 2
+
+[connection signal="pressed" from="CanvasLayer/SMSPanel/Button" to="GameManager" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ChestPanel/YesButton" to="TreasureChests/TreasureChest" method="_on_yes_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ChestPanel/NoButton" to="TreasureChests/TreasureChest" method="_on_no_button_pressed"]

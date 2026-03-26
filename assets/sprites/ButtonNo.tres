@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://di1eyt36grkey"]
+
+[ext_resource type="Texture2D" uid="uid://ua7co4xc8dlw" path="res://assets/sprites/Emoji_Spritesheet_Free.png" id="1_c6ksc"]
+
+[resource]
+atlas = ExtResource("1_c6ksc")
+region = Rect2(34, 226, 28, 28)

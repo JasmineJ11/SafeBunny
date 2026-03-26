@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://vcks7bg5w6k8"]
+
+[ext_resource type="Texture2D" uid="uid://cixvm3spsc7j" path="res://assets/sprites/Chest.png" id="1_35cbr"]
+[ext_resource type="Script" uid="uid://ct1jnmcomblje" path="res://scripts/treasure_chest.gd" id="1_ili54"]
+[ext_resource type="AudioStream" uid="uid://bbyscdx6bv021" path="res://assets/sounds/success.mp3" id="3_naunw"]
+[ext_resource type="AudioStream" uid="uid://d34oeeem4u06v" path="res://assets/sounds/fail.mp3" id="4_qs2ad"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ili54"]
+atlas = ExtResource("1_35cbr")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvivq"]
+atlas = ExtResource("1_35cbr")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naunw"]
+atlas = ExtResource("1_35cbr")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qs2ad"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ili54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvivq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naunw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qavs"]
+size = Vector2(18, 15)
+
+[node name="TreasureChest" type="Area2D" unique_id=139621350]
+script = ExtResource("1_ili54")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=766074299]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_qs2ad")
+autoplay = "default"
+frame_progress = 0.21702226
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1443039276]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_7qavs")
+
+[node name="SuccessSound" type="AudioStreamPlayer2D" parent="." unique_id=290508003]
+process_mode = 3
+stream = ExtResource("3_naunw")
+
+[node name="FailSound" type="AudioStreamPlayer2D" parent="." unique_id=220791820]
+process_mode = 3
+stream = ExtResource("4_qs2ad")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
