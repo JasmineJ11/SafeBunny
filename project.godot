@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="AAAAA"
+config/name="SafeSafe"
 run/main_scene="uid://bwkqu7ml4hcqx"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
