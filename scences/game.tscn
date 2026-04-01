@@ -757,19 +757,15 @@ position = Vector2(467, 15)
 collision_mask = 2
 
 [node name="Monster" parent="." unique_id=289106508 instance=ExtResource("18_3sylk")]
-position = Vector2(106, 16)
+position = Vector2(377, 31)
 collision_mask = 2
 
 [node name="BullyMessage" parent="." unique_id=561950687 instance=ExtResource("19_6hct1")]
-position = Vector2(7, 33)
+position = Vector2(630, -57)
 collision_mask = 2
 script = ExtResource("19_udhis")
 
 [node name="SadKids" type="Node" parent="." unique_id=426082802]
-
-[node name="SadKid" parent="SadKids" unique_id=2075898073 instance=ExtResource("20_udhis")]
-unique_name_in_owner = true
-position = Vector2(358, -113)
 
 [node name="SadKid2" parent="SadKids" unique_id=215682837 instance=ExtResource("20_udhis")]
 unique_name_in_owner = true
@@ -779,6 +775,10 @@ position = Vector2(339, -16)
 unique_name_in_owner = true
 position = Vector2(216, 16)
 
+[node name="SadKid4" parent="SadKids" unique_id=2075898073 instance=ExtResource("20_udhis")]
+unique_name_in_owner = true
+position = Vector2(146, 0)
+
 [connection signal="pressed" from="CanvasLayer/SMSPanel/Button" to="GameManager" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ChestPanel/YesButton" to="TreasureChests/TreasureChest" method="_on_yes_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ChestPanel/NoButton" to="TreasureChests/TreasureChest" method="_on_no_button_pressed"]
@@ -787,8 +787,7 @@ position = Vector2(216, 16)
 [connection signal="pressed" from="CanvasLayer/BullyPanel/ButtonL" to="BullyMessage" method="_on_button_l_pressed"]
 [connection signal="pressed" from="CanvasLayer/BullyPanel/ButtonM" to="BullyMessage" method="_on_button_m_pressed"]
 [connection signal="pressed" from="CanvasLayer/BullyPanel/ButtonR" to="BullyMessage" method="_on_button_r_pressed"]
-[connection signal="pressed" from="CanvasLayer/LoveButton" to="SadKids/SadKid" method="_on_love_button_pressed"]
 [connection signal="body_entered" from="BullyMessage" to="BullyMessage" method="_on_body_entered"]
-[connection signal="body_entered" from="SadKids/SadKid" to="SadKids/SadKid" method="_on_body_entered"]
 [connection signal="body_entered" from="SadKids/SadKid2" to="SadKids/SadKid2" method="_on_body_entered"]
 [connection signal="body_entered" from="SadKids/SadKid3" to="SadKids/SadKid3" method="_on_body_entered"]
+[connection signal="body_entered" from="SadKids/SadKid4" to="SadKids/SadKid4" method="_on_body_entered"]

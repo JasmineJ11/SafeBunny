@@ -48,17 +48,39 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sy3sl"]
 size = Vector2(16, 16)
 
+[sub_resource type="Gradient" id="Gradient_8lmhx"]
+offsets = PackedFloat32Array(0, 0.15510204, 0.31836733, 0.46938777, 0.6, 0.7387755, 0.8734694, 1)
+colors = PackedColorArray(1, 0.48336583, 0.41576505, 1, 0.4105367, 0.4785306, 0.7957112, 1, 0.3529412, 0.6862745, 0.5019608, 1, 0.9529412, 0.20392157, 0.22745098, 1, 0.84235233, 0.60507417, 0.8982631, 1, 0.49826252, 0.459063, 0.7492301, 1, 0.84270346, 0.8209949, 0.3305613, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pdjve"]
+gradient = SubResource("Gradient_8lmhx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0yydy"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+velocity_pivot = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 150.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 400, 0)
+scale_min = 2.0
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_pdjve")
+
 [node name="SadKid" type="Area2D" unique_id=2075898073]
 collision_mask = 2
 script = ExtResource("1_h6ejr")
 
 [node name="SadKidSprite" type="AnimatedSprite2D" parent="." unique_id=1121309257]
-position = Vector2(0, -6)
+position = Vector2(0, -7)
 scale = Vector2(0.609375, 0.609375)
 sprite_frames = SubResource("SpriteFrames_1lwxd")
 animation = &"sad"
 autoplay = "sad"
-frame_progress = 0.3121147
+frame_progress = 0.6081911
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=273037268]
 position = Vector2(0, -8)
@@ -66,3 +88,10 @@ shape = SubResource("RectangleShape2D_sy3sl")
 
 [node name="happySound" type="AudioStreamPlayer2D" parent="." unique_id=527218090]
 stream = ExtResource("3_8lmhx")
+
+[node name="ConfettiParticles" type="GPUParticles2D" parent="." unique_id=1033104976]
+emitting = false
+amount = 150
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_0yydy")
