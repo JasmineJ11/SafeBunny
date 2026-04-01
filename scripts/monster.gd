@@ -18,6 +18,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and not is_triggered:
 		is_triggered = true
 		start_pwevent()
+		game_manager.play_notification_sound()
+
 		
 func start_pwevent():
 	password_panel.show()

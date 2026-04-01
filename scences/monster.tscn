@@ -70,19 +70,20 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3v6"]
-size = Vector2(13, 18)
+size = Vector2(9, 14)
 
 [node name="Monster" type="Area2D" unique_id=2054181259]
 script = ExtResource("1_rvt0e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1545630423]
-position = Vector2(0, -7)
+position = Vector2(0, -4.0000005)
+scale = Vector2(0.8125, 0.8125)
 sprite_frames = SubResource("SpriteFrames_oojao")
 autoplay = "default"
 frame_progress = 0.8526615
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1102111815]
-position = Vector2(0, -9)
+position = Vector2(1, -7)
 shape = SubResource("RectangleShape2D_nq3v6")
 
 [node name="SuccessSound" type="AudioStreamPlayer2D" parent="." unique_id=1107712056]

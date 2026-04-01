@@ -753,15 +753,15 @@ icon_alignment = 1
 
 [node name="TreasureChest" parent="TreasureChests" unique_id=139621350 instance=ExtResource("15_4jcax")]
 process_mode = 3
-position = Vector2(467, 15)
+position = Vector2(118, 14)
 collision_mask = 2
 
 [node name="Monster" parent="." unique_id=289106508 instance=ExtResource("18_3sylk")]
-position = Vector2(377, 31)
+position = Vector2(7, 31)
 collision_mask = 2
 
 [node name="BullyMessage" parent="." unique_id=561950687 instance=ExtResource("19_6hct1")]
-position = Vector2(630, -57)
+position = Vector2(285, -17)
 collision_mask = 2
 script = ExtResource("19_udhis")
 

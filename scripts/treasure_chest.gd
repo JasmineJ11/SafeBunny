@@ -29,6 +29,7 @@ func _on_body_entered(body):
 # --- 2. start the window ---
 func start_scam_event():
 	chest_panel.show()
+	game_manager.play_notification_sound()
 	if blur_bg: blur_bg.show()
 	yes_button.show()
 	no_button.show()

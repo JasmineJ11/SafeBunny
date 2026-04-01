@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://bdee6qrks4pdf"]
 
 [ext_resource type="Script" uid="uid://bd0bxlq84buib" path="res://scripts/game_manager.gd" id="1_phema"]
+[ext_resource type="AudioStream" uid="uid://c3xfpojg2pahs" path="res://assets/sounds/new-notification.mp3" id="2_wp6ku"]
 
 [node name="GameManager" type="Node" unique_id=64977201]
 script = ExtResource("1_phema")
+
+[node name="NotificationSound" type="AudioStreamPlayer" parent="." unique_id=632802152]
+stream = ExtResource("2_wp6ku")

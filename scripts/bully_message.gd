@@ -147,6 +147,8 @@ func _on_body_entered(body: Node2D) -> void:
 		is_triggered = true
 		current_round = 0
 		show_round()
+		game_manager.play_notification_sound()
+		
 
 
 func show_round():
