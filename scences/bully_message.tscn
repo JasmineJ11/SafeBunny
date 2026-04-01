@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://cchd7fvygwarf"]
+
+[ext_resource type="Texture2D" uid="uid://derx5mon8ha5w" path="res://assets/sprites/Sprite sheet for Basic Pack.png" id="1_8raeu"]
+[ext_resource type="AudioStream" uid="uid://bbyscdx6bv021" path="res://assets/sounds/success.mp3" id="2_8sbb0"]
+[ext_resource type="AudioStream" uid="uid://d34oeeem4u06v" path="res://assets/sounds/fail.mp3" id="3_lttjt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfgt2"]
+atlas = ExtResource("1_8raeu")
+region = Rect2(645, 164, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8raeu"]
+atlas = ExtResource("1_8raeu")
+region = Rect2(645, 132, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sbb0"]
+atlas = ExtResource("1_8raeu")
+region = Rect2(677, 134, 22, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sbb0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfgt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8raeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sbb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8raeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sbb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8raeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sbb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8raeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8raeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8raeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8raeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8raeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8raeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8raeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8raeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8raeu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lttjt"]
+size = Vector2(12, 14)
+
+[node name="BullyMessage" type="Area2D" unique_id=561950687]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=6872003]
+position = Vector2(2.9802322e-08, -6.9999995)
+scale = Vector2(0.59090906, 0.5909091)
+sprite_frames = SubResource("SpriteFrames_8sbb0")
+autoplay = "default"
+frame_progress = 0.046054147
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=283245048]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_lttjt")
+
+[node name="SuccessSound" type="AudioStreamPlayer2D" parent="." unique_id=1061017667]
+process_mode = 3
+stream = ExtResource("2_8sbb0")
+
+[node name="FailSound" type="AudioStreamPlayer2D" parent="." unique_id=2002460147]
+process_mode = 3
+stream = ExtResource("3_lttjt")

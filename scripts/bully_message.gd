@@ -1,0 +1,231 @@
+#extends Area2D
+#
+#@onready var game_manager: Node = %GameManager
+#@onready var bully_panel: Panel = %BullyPanel
+#@onready var bully_label: Label = %BullyLabel
+#@onready var button_l: Button = %ButtonL
+#@onready var button_m: Button = %ButtonM
+#@onready var button_r: Button = %ButtonR
+#
+#
+#
+#var is_triggered = false 
+#
+#func _ready():
+	#bully_panel.hide()
+	#
+#func _on_body_entered(body: Node2D) -> void:
+	#if body.name == "Player" and not is_triggered:
+		#is_triggered = true
+		#start_event()
+	#
+#func start_event():
+	#bully_panel.show()
+	#bully_label.text = "📱 You recieved a meeage!"
+	#button_l.text = "Read now"
+#
+#
+#func _on_button_l_pressed() -> void:
+	#button_l.hide()
+	#MessageFirst()
+	#
+#
+##func _on_button_m_pressed() -> void:
+	#
+	#
+#func MessageFirst():
+	#bully_label.text = "👾 Haha, do you know that you look very weird? 😂"
+	#await get_tree().create_timer(3).timeout
+	#bully_label.text = "👾 Are you sure you are going to the party? 😂"
+	#button_l.show() # 重新显示中间按钮
+	#
+	#button_l.text = "😡 Insult back"
+	#button_m.text = "😢 Feel bad and don’t want to go"
+	#button_r.text = "✨ Ignore and keep going to the party"
+	#
+	#
+	#
+	#
+#
+#
+	##button_weak.hide()
+	##button_strong.hide()
+	##if fail_sound: fail_sound.play()
+	##password_panel.modulate = Color(0.977, 0.609, 0.6, 1.0) 
+	##password_label.text = "❗ OH NOOO! This password is too week!
+	##⚠️ It can be guessed easily!"
+	##await get_tree().create_timer(2.5).timeout
+	##password_panel.modulate = Color.WHITE
+	##password_label.text = "❗ You lose 1 heart!"
+	##await get_tree().create_timer(2).timeout
+	##game_manager.score -= 1
+	##game_manager.update_score()
+	##finish_event()
+	##
+##
+##func _on_button_strong_pressed() -> void:
+	##button_weak.hide()
+	##button_strong.hide()
+	##if success_sound: success_sound.play()
+	##password_panel.modulate = Color(0.5, 1, 0.5) 
+	##password_label.text = "🛡 Strong password created!"
+	##await get_tree().create_timer(2.5).timeout
+	##password_panel.modulate = Color.WHITE
+	##password_label.text = "✨ You protected your information!
+	##✨ You got 1 heart!"
+	##await get_tree().create_timer(2.5).timeout
+	##password_label.text = "🐱 Complex and unpredictable passwords are the safest!"
+	##await get_tree().create_timer(3).timeout
+	##game_manager.score += 1
+	##game_manager.update_score()
+	##finish_event()
+	##
+##func finish_event():
+	##password_panel.hide()
+	##password_panel.modulate = Color.WHITE 
+	##is_triggered = false
+	##get_tree().paused = false
+	
+	
+extends Area2D
+
+
+@onready var bully_panel: Panel = %BullyPanel
+@onready var bully_label: Label = %BullyLabel
+@onready var btn_l: Button = %ButtonL
+@onready var btn_m: Button = %ButtonM
+@onready var btn_r: Button = %ButtonR
+@onready var game_manager: Node = %GameManager
+@onready var success_sound: AudioStreamPlayer2D = $SuccessSound
+@onready var fail_sound: AudioStreamPlayer2D = $FailSound
+
+
+var dialogue_data = {
+	0: {
+		"text": "📱 You received a message!",
+		"options": ["Read now", "", ""],
+		"correct": 1 
+	},
+	1: {
+		"text": "👾： Haha, do you know that you look very weird? Are you sure you are going to the party?",
+		"options": ["😡 Insult back", "😢 Feel bad and don’t want to go", "✨ Ignore and keep going to the party"],
+		"correct": 2, 
+		"feedback": [
+			"🐱: Fighting back makes it worse.",
+			"🐱: Others' words don't define you."
+		]
+	},
+	2: {
+		"text": "👾： Ohhh NOBODY wants you at the party, you better not come. 😒",
+		"options": ["😡 Reply angrily", "😟 Ask your friend if they don’t like you",  "✨ Ignore and tell your parents or teacher"],
+		"correct": 2,
+		"feedback": [
+			"😡: Anger won't solve this.\n🐱: Stay calm and find help.",
+			"😰: They won't give you a real answer.\n🐱: Don't seek their approval."
+		]
+	},
+	3: {
+		"text": "👾： ANSWER NOW!! Why aren’t you answering!! 😡",
+		"options": ["😢 Keep explain", "😡 Fight back", "✨ Screenshot, report and block"],
+		"correct": 2, 
+		"feedback": [
+			"😰: You don't need to explain to a bully.\n🐱: Protect your peace.",
+			"😡: Don't let them bait your anger.\n🐱: Keep the evidence instead."
+		]
+	}
+}
+
+var current_round = 0
+var is_triggered = false
+
+func _ready():
+	bully_panel.hide()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == "Player" and not is_triggered:
+		is_triggered = true
+		current_round = 0
+		show_round()
+
+
+func show_round():
+	bully_panel.show()
+	var data = dialogue_data[current_round]
+	bully_label.text = data["text"]
+	
+	if current_round == 0:
+		# 开场只显示第一个按钮
+		btn_l.show(); btn_r.hide(); btn_m.hide()
+		btn_l.text = data["options"][0]
+	else:
+		# 正式环节显示三个按钮
+		btn_l.show(); btn_m.show(); btn_r.show()
+		btn_l.text = data["options"][0]
+		btn_m.text = data["options"][1]
+		btn_r.text = data["options"][2]
+
+# --- 5. 按钮点击统一处理 ---
+func _on_button_pressed(index: int):
+	var data = dialogue_data[current_round]
+	
+	# 开场
+	if current_round == 0:
+		current_round = 1
+		show_round()
+		return
+	
+	# 正式判断
+	if index == data["correct"]:
+		handle_correct()
+	else:
+		handle_wrong(index)
+
+# --- 正确 ---
+func handle_correct():
+	if success_sound: success_sound.play()
+	bully_label.text = "🚨 This is online harassment!
+	✨ You protected yourself!
+	❤️ You got one heart!"
+	game_manager.score += 1
+	game_manager.update_score()
+	hide_buttons()
+	await get_tree().create_timer(3.0).timeout
+	if current_round < 3:
+		current_round += 1
+		show_round()
+	else:
+		finish_event()
+
+# --- 错误 ---
+func handle_wrong(index: int):
+	if fail_sound: fail_sound.play()
+	hide_buttons()
+	
+	var feedback_text = dialogue_data[current_round]["feedback"][index]
+	bully_label.text = "❌ " + feedback_text
+	await get_tree().create_timer(3).timeout
+	bully_label.text = "❗ You lose 1 heart. Try again!"
+	# 惩罚
+	game_manager.score -= 1
+	game_manager.update_score()
+	
+	await get_tree().create_timer(1.5).timeout
+	show_round() # 循环：让玩家重新选这一轮
+
+func hide_buttons():
+	btn_l.hide(); btn_m.hide(); btn_r.hide()
+
+func finish_event():
+	bully_label.text = "✨ You stayed safe and strong!\n✨ Bully defeated."
+	await get_tree().create_timer(3.0).timeout
+	bully_label.text = "✨ When facing online bullying: ignore → seek adult help → protect yourself."
+	await get_tree().create_timer(3.5).timeout
+	bully_panel.hide()
+	is_triggered = false
+
+# --- 8. 信号连接 ---
+func _on_button_l_pressed(): _on_button_pressed(0)
+func _on_button_m_pressed(): _on_button_pressed(1)
+func _on_button_r_pressed(): _on_button_pressed(2)
+	

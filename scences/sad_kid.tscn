@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dtf1bidnsxl4b"]
+
+[ext_resource type="Script" uid="uid://dgg8ffw6rgv4b" path="res://scripts/sad_kid.gd" id="1_h6ejr"]
+[ext_resource type="Texture2D" uid="uid://ua7co4xc8dlw" path="res://assets/sprites/Emoji_Spritesheet_Free.png" id="2_8lmhx"]
+[ext_resource type="AudioStream" uid="uid://buxnbeiwo458s" path="res://assets/sounds/toddler-laughing.mp3" id="3_8lmhx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6ejr"]
+atlas = ExtResource("2_8lmhx")
+region = Rect2(0, 61, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lmhx"]
+atlas = ExtResource("2_8lmhx")
+region = Rect2(0, 66, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdjve"]
+atlas = ExtResource("2_8lmhx")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yydy"]
+atlas = ExtResource("2_8lmhx")
+region = Rect2(128, 99, 32, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1lwxd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6ejr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lmhx")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdjve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yydy")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 1.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sy3sl"]
+size = Vector2(16, 16)
+
+[node name="SadKid" type="Area2D" unique_id=2075898073]
+collision_mask = 2
+script = ExtResource("1_h6ejr")
+
+[node name="SadKidSprite" type="AnimatedSprite2D" parent="." unique_id=1121309257]
+position = Vector2(0, -6)
+scale = Vector2(0.609375, 0.609375)
+sprite_frames = SubResource("SpriteFrames_1lwxd")
+animation = &"sad"
+autoplay = "sad"
+frame_progress = 0.3121147
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=273037268]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_sy3sl")
+
+[node name="happySound" type="AudioStreamPlayer2D" parent="." unique_id=527218090]
+stream = ExtResource("3_8lmhx")

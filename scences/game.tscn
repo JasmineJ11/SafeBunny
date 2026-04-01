@@ -15,9 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://bgtidpfo30txk" path="res://assets/sprites/CowFriend.tres" id="13_wctid"]
 [ext_resource type="PackedScene" uid="uid://vcks7bg5w6k8" path="res://scences/treasure_chest.tscn" id="15_4jcax"]
 [ext_resource type="Texture2D" uid="uid://di1eyt36grkey" path="res://assets/sprites/ButtonNo.tres" id="15_74n68"]
-[ext_resource type="Script" uid="uid://b053q3b0emsha" path="res://scripts/password_panel.gd" id="16_80opq"]
 [ext_resource type="PackedScene" uid="uid://cuqku6e87mmry" path="res://scences/monster.tscn" id="18_3sylk"]
 [ext_resource type="PackedScene" uid="uid://bdee6qrks4pdf" path="res://scences/game_manager.tscn" id="18_6hct1"]
+[ext_resource type="PackedScene" uid="uid://cchd7fvygwarf" path="res://scences/bully_message.tscn" id="19_6hct1"]
+[ext_resource type="Script" uid="uid://b0ru0fraosqtn" path="res://scripts/bully_message.gd" id="19_udhis"]
+[ext_resource type="PackedScene" uid="uid://dtf1bidnsxl4b" path="res://scences/sad_kid.tscn" id="20_udhis"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b174u"]
 texture = ExtResource("2_jx3ei")
@@ -357,6 +359,17 @@ texture_margin_bottom = 3.0
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ua0fu"]
 texture = ExtResource("11_nn1ya")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udhis"]
+bg_color = Color(0.9803596, 0.6479831, 0.6378557, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="Game" type="Node2D" unique_id=1205654372]
 
 [node name="TileMapLayer_background" type="TileMapLayer" parent="." unique_id=961370362]
@@ -366,6 +379,9 @@ tile_set = SubResource("TileSet_yru2q")
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=28908610]
 tile_map_data = PackedByteArray("AAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAATAPn/AAAGAAAAAAATAPr/AAAGAAEAAAAUAPn/AAAGAAAAAAAVAPn/AAAGAAAAAAAWAPn/AAAGAAAAAAAXAPn/AAAGAAAAAAAYAAAAAAAAAAQAAAAYAP//AAAAAAQAAAAYAP7/AAAAAAQAAAAYAP3/AAAAAAMAAAD//wMAAAAAAAEAAAD//wQAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAMAAAAAAAEAAAABAAMAAAAAAAEAAAACAAMAAAAAAAEAAAADAAMAAAAAAAEAAAADAAQAAAAAAAEAAAACAAQAAAAAAAEAAAABAAQAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAEAAAAFAAMAAAAAAAEAAAAFAAIAAAAAAAEAAAAGAAIAAAAAAAEAAAAHAAIAAAAAAAEAAAAHAAMAAAAAAAEAAAAGAAMAAAAAAAEAAAAIAAEAAAAAAAEAAAAIAAIAAAAAAAEAAAAJAAIAAAAAAAEAAAAJAAEAAAAAAAEAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAEAAAANAAIAAAAAAAEAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAEAAAAUAPr/AAAGAAEAAAAVAPr/AAAGAAEAAAAWAPr/AAAGAAEAAAAXAPr/AAAGAAEAAAARAAEAAAABAAEAAAARAAIAAAAAAAEAAAASAAIAAAAAAAEAAAASAAEAAAABAAEAAAATAAEAAAABAAEAAAAUAAEAAAAAAAEAAAAVAAEAAAABAAEAAAAVAAIAAAAAAAEAAAAUAAIAAAAAAAEAAAATAAIAAAABAAEAAAAWAAIAAAAGAAAAAAAWAAMAAAAGAAEAAAAXAAMAAAAGAAEAAAAYAAIAAAAGAAAAAAAXAAIAAAAGAAAAAAAYAAMAAAAGAAEAAAAXAPj/AAAHAAUAAAAEAAAAAAAIAAcAAAAhAPn/AAAGAAAAAAAhAPr/AAAGAAEAAAAiAPn/AAAGAAAAAAAiAPr/AAAGAAEAAAAhAPv/AAAIAAEAAAAiAPv/AAAIAAEAAAAcAAEAAAAAAAAAAAAdAAEAAAAAAAAAAAAeAAEAAAAAAAAAAAAfAAEAAAAAAAAAAAAcAAIAAAABAAEAAAAdAAIAAAABAAEAAAAeAAIAAAABAAEAAAAfAAIAAAABAAEAAAAjAPv/AAAGAAEAAAAkAPv/AAAGAAEAAAAeAAAAAAABAAUAAAAjAPr/AAABAAUAAAAQAAUAAAABAAEAAAD9/wIAAAAEAAAAAAD8/wIAAAAEAAAAAAD5//T/AAAIAAEAAAD5//X/AAAIAAEAAAD5//b/AAAGAAEAAAD5//f/AAAGAAEAAAD5//j/AAAGAAEAAAD6//T/AAAGAAEAAAD6//X/AAAIAAEAAAD6//b/AAAIAAEAAAD6//f/AAAIAAEAAAD6//j/AAAIAAEAAAAiAAAAAAAAAAAAAAAiAAEAAAAAAAEAAAAiAAIAAAAAAAEAAAAiAAMAAAAAAAEAAAAjAAIAAAABAAEAAAAkAAIAAAAAAAEAAAAlAAIAAAAAAAEAAAAmAAIAAAAAAAEAAAAnAAIAAAAAAAEAAAAoAAIAAAABAAEAAAApAAIAAAAAAAEAAAAqAAIAAAAAAAEAAAArAAIAAAAAAAEAAAAjAAMAAAAAAAEAAAAkAAMAAAAAAAEAAAAlAAMAAAABAAEAAAAmAAMAAAAAAAEAAAAnAAMAAAAAAAEAAAAoAAMAAAAAAAEAAAApAAMAAAAAAAEAAAAqAAMAAAAAAAEAAAArAAMAAAAAAAEAAAArAAAAAAAAAAAAAAArAAEAAAABAAAAAAAmAP//AAADAAgAAAAmAAAAAAADAAgAAAAmAAEAAAADAAgAAAAmAP7/AAACAAQAAAApAPz/AAACAAQAAAApAP3/AAADAAcAAAApAP7/AAADAAcAAAApAP//AAADAAcAAAApAAAAAAADAAcAAAApAAEAAAADAAcAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAsAAEAAAAAAAEAAAAsAAIAAAAAAAEAAAAsAAMAAAAAAAEAAAAtAAEAAAAAAAEAAAAtAAIAAAAAAAEAAAAtAAMAAAAAAAEAAAAjAAAAAAAAAAAAAAAjAAEAAAABAAEAAAAYAAEAAAAAAAUAAAAMAAMAAAABAAEAAAANAAMAAAABAAEAAAAOAAMAAAABAAEAAAAIAAMAAAABAAEAAAAJAAMAAAABAAEAAAARAAMAAAABAAEAAAASAAMAAAABAAEAAAATAAMAAAABAAEAAAAUAAMAAAABAAEAAAAVAAMAAAABAAEAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAARAAAAAAABAAEAAAASAAAAAAABAAEAAAAUAAAAAAAAAAEAAAATAAAAAAAAAAEAAAAVAAAAAAABAAEAAAADAPr/AAAGAAEAAAAEAPr/AAAIAAEAAAAEAPv/AAAGAAEAAAAFAPv/AAAGAAEAAAADAPv/AAAGAAEAAAACAPr/AAAGAAEAAAACAPv/AAAIAAEAAAABAPj/AAAHAAAAAAABAPn/AAAIAAEAAAABAPr/AAAGAAEAAAABAPv/AAAGAAEAAAD///j/AAAHAAAAAAD///n/AAAIAAEAAAD///r/AAAGAAEAAAD///v/AAAGAAEAAAAAAPv/AAAGAAEAAAAAAPr/AAAIAAEAAAAAAPn/AAAGAAEAAAAAAPj/AAAHAAAAAAAFAPr/AAAIAAEAAAD9//j/AAAHAAAAAAD+//j/AAAHAAAAAAD+//n/AAAIAAEAAAD+//r/AAAIAAEAAAD+//v/AAAIAAEAAAD9//v/AAAIAAEAAAD9//r/AAAIAAEAAAD9//n/AAAIAAEAAAAGAPr/AAAIAAEAAAAGAPv/AAAIAAEAAAAHAPv/AAAIAAEAAAAHAPr/AAAIAAEAAAAKAPr/AAAHAAAAAAALAPr/AAAHAAAAAAAHAPn/AAAIAAEAAAAIAPn/AAAIAAEAAAAJAPn/AAAHAAAAAAACAPj/AAAHAAAAAAACAPn/AAAGAAEAAAADAPj/AAAHAAAAAAADAPn/AAAGAAEAAAAEAPj/AAAHAAAAAAAEAPn/AAAGAAEAAAAFAPj/AAAHAAAAAAAFAPn/AAAGAAEAAAAGAPj/AAAHAAAAAAAGAPn/AAAGAAEAAAAIAPr/AAAIAAEAAAAIAPv/AAAIAAEAAAAJAPr/AAAIAAEAAAAJAPv/AAAIAAEAAAAKAPv/AAAIAAEAAAALAPv/AAAIAAEAAAAHAPj/AAAHAAAAAAAIAPj/AAAHAAAAAAD9//b/AAAIAAEAAAD9//f/AAAIAAEAAAD8//L/AAAGAAEAAAD8//P/AAAGAAEAAAD8//T/AAAGAAEAAAD9//L/AAAGAAEAAAD9//P/AAAGAAEAAAD9//T/AAAGAAEAAAD6//L/AAAGAAEAAAD6//P/AAAGAAEAAAD7//L/AAAGAAEAAAD7//P/AAAIAAEAAAD7//T/AAAGAAEAAAD7//X/AAAIAAEAAAD8//X/AAAGAAEAAAD5//n/AAAIAAEAAAD5//r/AAAGAAEAAAD5//v/AAAGAAEAAAD6//n/AAAGAAEAAAD6//r/AAAGAAEAAAD6//v/AAAGAAEAAAD7//b/AAAIAAEAAAD7//f/AAAIAAEAAAD7//j/AAAIAAEAAAD7//n/AAAGAAEAAAD7//r/AAAIAAEAAAD7//v/AAAGAAEAAAD8//b/AAAGAAEAAAD8//f/AAAGAAEAAAD8//j/AAAGAAEAAAD8//n/AAAGAAEAAAD8//r/AAAGAAEAAAD8//v/AAAGAAEAAAD5//L/AAAIAAEAAAD5//P/AAAIAAEAAAAFAPL/AAACAAQAAAAFAPX/AAADAAcAAAAFAPb/AAADAAcAAAAFAPf/AAADAAgAAAALAPn/AAABAAUAAAAJAPj/AAABAAMAAAAFAPP/AAACAAQAAAAFAPT/AAACAAQAAAACAPf/AAAHAAUAAAATAP7/AAAHAAUAAAAhAPj/AAAIAAcAAAD9//X/AAAGAAEAAAAPAPf/AAAHAAAAAAAQAPf/AAAHAAAAAAARAPf/AAAHAAAAAAASAPf/AAAHAAAAAAAPAPj/AAAGAAEAAAAPAPn/AAAIAAEAAAAPAPr/AAAGAAEAAAAQAPj/AAAIAAEAAAAQAPn/AAAIAAEAAAAQAPr/AAAIAAEAAAARAPj/AAAGAAEAAAARAPn/AAAGAAEAAAARAPr/AAAIAAEAAAASAPj/AAAGAAEAAAASAPn/AAAGAAEAAAASAPr/AAAIAAEAAAA=")
 tile_set = SubResource("TileSet_xfuu6")
+
+[node name="GameManager" parent="." unique_id=64977201 instance=ExtResource("18_6hct1")]
+unique_name_in_owner = true
 
 [node name="Player" parent="." unique_id=1193462206 instance=ExtResource("1_lbs7c")]
 position = Vector2(33, 32)
@@ -615,7 +631,6 @@ offset_bottom = 143.375
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ua0fu")
-script = ExtResource("16_80opq")
 
 [node name="PasswordLabel" type="Label" parent="CanvasLayer/PasswordPanel" unique_id=1983837187]
 unique_name_in_owner = true
@@ -652,6 +667,88 @@ theme_override_font_sizes/font_size = 25
 text = "👉 G7!kP#2zQ@9LrA"
 flat = true
 
+[node name="BullyPanel" type="Panel" parent="CanvasLayer" unique_id=831553504]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -444.75507
+offset_top = -143.375
+offset_right = 444.75507
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ua0fu")
+
+[node name="BullyLabel" type="Label" parent="CanvasLayer/BullyPanel" unique_id=829791734]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 57.755066
+offset_top = 144.375
+offset_right = 861.75507
+offset_bottom = 232.375
+theme_override_fonts/font = ExtResource("7_cho2i")
+theme_override_font_sizes/font_size = 26
+autowrap_mode = 2
+
+[node name="ButtonL" type="Button" parent="CanvasLayer/BullyPanel" unique_id=485654191]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 48.755066
+offset_top = 259.375
+offset_right = 511.75507
+offset_bottom = 306.375
+theme_override_fonts/font = ExtResource("7_cho2i")
+theme_override_font_sizes/font_size = 25
+flat = true
+alignment = 0
+
+[node name="ButtonM" type="Button" parent="CanvasLayer/BullyPanel" unique_id=2147285632]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 48.755066
+offset_top = 298.375
+offset_right = 520.75507
+offset_bottom = 345.375
+theme_override_fonts/font = ExtResource("7_cho2i")
+theme_override_font_sizes/font_size = 25
+flat = true
+alignment = 0
+
+[node name="ButtonR" type="Button" parent="CanvasLayer/BullyPanel" unique_id=698046505]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 48.755066
+offset_top = 336.375
+offset_right = 520.75507
+offset_bottom = 383.375
+theme_override_fonts/font = ExtResource("7_cho2i")
+theme_override_font_sizes/font_size = 25
+flat = true
+alignment = 0
+
+[node name="LoveButton" type="Button" parent="CanvasLayer" unique_id=1390794964]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.67
+anchor_right = 0.5
+anchor_bottom = 0.67
+offset_left = -249.25
+offset_top = -48.160004
+offset_right = 249.25
+offset_bottom = 40.339996
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_cho2i")
+theme_override_font_sizes/font_size = 29
+theme_override_styles/normal = SubResource("StyleBoxFlat_udhis")
+text = " ❤️ Send your love ^^"
+alignment = 0
+icon_alignment = 1
+
 [node name="TreasureChests" type="Node" parent="." unique_id=677872652]
 
 [node name="TreasureChest" parent="TreasureChests" unique_id=139621350 instance=ExtResource("15_4jcax")]
@@ -663,11 +760,35 @@ collision_mask = 2
 position = Vector2(106, 16)
 collision_mask = 2
 
-[node name="GameManager" parent="." unique_id=64977201 instance=ExtResource("18_6hct1")]
+[node name="BullyMessage" parent="." unique_id=561950687 instance=ExtResource("19_6hct1")]
+position = Vector2(7, 33)
+collision_mask = 2
+script = ExtResource("19_udhis")
+
+[node name="SadKids" type="Node" parent="." unique_id=426082802]
+
+[node name="SadKid" parent="SadKids" unique_id=2075898073 instance=ExtResource("20_udhis")]
 unique_name_in_owner = true
+position = Vector2(358, -113)
+
+[node name="SadKid2" parent="SadKids" unique_id=215682837 instance=ExtResource("20_udhis")]
+unique_name_in_owner = true
+position = Vector2(339, -16)
+
+[node name="SadKid3" parent="SadKids" unique_id=233333010 instance=ExtResource("20_udhis")]
+unique_name_in_owner = true
+position = Vector2(216, 16)
 
 [connection signal="pressed" from="CanvasLayer/SMSPanel/Button" to="GameManager" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ChestPanel/YesButton" to="TreasureChests/TreasureChest" method="_on_yes_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ChestPanel/NoButton" to="TreasureChests/TreasureChest" method="_on_no_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PasswordPanel/ButtonWeak" to="Monster" method="_on_button_weak_pressed"]
 [connection signal="pressed" from="CanvasLayer/PasswordPanel/ButtonStrong" to="Monster" method="_on_button_strong_pressed"]
+[connection signal="pressed" from="CanvasLayer/BullyPanel/ButtonL" to="BullyMessage" method="_on_button_l_pressed"]
+[connection signal="pressed" from="CanvasLayer/BullyPanel/ButtonM" to="BullyMessage" method="_on_button_m_pressed"]
+[connection signal="pressed" from="CanvasLayer/BullyPanel/ButtonR" to="BullyMessage" method="_on_button_r_pressed"]
+[connection signal="pressed" from="CanvasLayer/LoveButton" to="SadKids/SadKid" method="_on_love_button_pressed"]
+[connection signal="body_entered" from="BullyMessage" to="BullyMessage" method="_on_body_entered"]
+[connection signal="body_entered" from="SadKids/SadKid" to="SadKids/SadKid" method="_on_body_entered"]
+[connection signal="body_entered" from="SadKids/SadKid2" to="SadKids/SadKid2" method="_on_body_entered"]
+[connection signal="body_entered" from="SadKids/SadKid3" to="SadKids/SadKid3" method="_on_body_entered"]
