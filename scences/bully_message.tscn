@@ -76,6 +76,7 @@ animations = [{
 size = Vector2(12, 14)
 
 [node name="BullyMessage" type="Area2D" unique_id=561950687]
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=6872003]
 position = Vector2(2.9802322e-08, -6.9999995)

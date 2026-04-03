@@ -7,6 +7,10 @@ var direction = 1
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+#func _ready():
+	#var attack_panel = get_node("../%AttackPanel")
+	#attack_panel.show()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.；
 # 两帧间的时间间隔
