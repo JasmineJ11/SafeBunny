@@ -9,6 +9,7 @@ extends Node
 
 var score = 0
 var helped_kid = 0
+var safety_score
 
 func _ready():
 	# 确保游戏开始时弹窗是看不见的
@@ -16,7 +17,7 @@ func _ready():
 	await get_tree().create_timer(3.0).timeout
 	show_invitation()
 	
-
+# heart score
 func add_helped_kid():
 	helped_kid += 1;
 	print(helped_kid)
@@ -24,9 +25,15 @@ func add_helped_kid():
 func add_point():
 	score += 1
 	update_score()
+	
+func sub_point():
+	score -= 1
+	update_score()
 		
 func update_score():
 	score_label.text = str(score)
+
+# safety score
 
 # 邀请玩家参加生日聚会
 func show_invitation():

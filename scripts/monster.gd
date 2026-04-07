@@ -24,8 +24,8 @@ func start_pwevent():
 	password_panel.show()
 	button_weak.show()
 	button_strong.show()
-	password_label.text = "👾 A monster is attacking your account!
-🔐 Set a password to protect yourself!"
+	password_label.text = "👾 Someone is attacking your account!
+🔐 Choose a password to protect yourself!"
 
 
 
@@ -40,8 +40,8 @@ func _on_button_weak_pressed() -> void:
 	password_panel.modulate = Color.WHITE
 	password_label.text = "❗ You lose 1 heart!"
 	await get_tree().create_timer(2).timeout
-	game_manager.score -= 1
-	game_manager.update_score()
+	game_manager.sub_point()
+	
 	finish_event()
 	
 
@@ -58,8 +58,7 @@ func _on_button_strong_pressed() -> void:
 	await get_tree().create_timer(2.5).timeout
 	password_label.text = "🐱 Complex and unpredictable passwords are the safest!"
 	await get_tree().create_timer(3).timeout
-	game_manager.score += 1
-	game_manager.update_score()
+	game_manager.add_point()
 	finish_event()
 	
 func finish_event():

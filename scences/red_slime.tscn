@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://r45mbagbl5u4" path="res://scripts/red_slime.gd" id="1_d1mdo"]
 [ext_resource type="Texture2D" uid="uid://c5n1pk0m6e12y" path="res://assets/sprites/slime_purple.png" id="2_rfmjf"]
+[ext_resource type="AudioStream" uid="uid://8bjnnsbbif6u" path="res://assets/sounds/goodresult.mp3" id="3_pckh8"]
+[ext_resource type="AudioStream" uid="uid://cvgtev45fl2nb" path="res://assets/sounds/wrong.mp3" id="4_bxukd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pckh8"]
 atlas = ExtResource("2_rfmjf")
@@ -111,3 +113,9 @@ frame_progress = 0.7999467
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1334077298]
 position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_ntk88")
+
+[node name="goodresults" type="AudioStreamPlayer" parent="." unique_id=184958351]
+stream = ExtResource("3_pckh8")
+
+[node name="wrong" type="AudioStreamPlayer" parent="." unique_id=939901755]
+stream = ExtResource("4_bxukd")

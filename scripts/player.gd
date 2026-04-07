@@ -6,6 +6,10 @@ const JUMP_VELOCITY = -300.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+var is_paused= false
+
+	
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -13,11 +17,14 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and is_paused == false:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction -1，0，1
+	
 	var direction := Input.get_axis("move_left", "move_right")
+	if is_paused:
+		direction = 0
 	
 	# 翻转人物方向
 	if direction > 0:

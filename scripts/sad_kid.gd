@@ -3,7 +3,6 @@ extends Area2D
 @onready var game_manager: Node = %GameManager
 @onready var anim: AnimatedSprite2D = $SadKidSprite
 @onready var happy_sound: AudioStreamPlayer2D = $happySound
-@onready var yeah_sound: AudioStreamPlayer2D = $YeahSound
 @onready var confetti_particles: GPUParticles2D = $ConfettiParticles
 
 
@@ -41,7 +40,7 @@ func _on_love_button_pressed() -> void:
 	if confetti_particles:
 		confetti_particles.restart()
 	
-	game_manager.add_point()
+	game_manager.sub_point()
 	game_manager.add_helped_kid()
 	
 	
