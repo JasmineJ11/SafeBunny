@@ -3,13 +3,15 @@ extends Node
 @onready var sms_panel: Panel = %SMSPanel
 @onready var notification_sound: AudioStreamPlayer = $NotificationSound
 @onready var invite_label: Label = %InviteLabel
+@onready var safety_label: Label = %SafetyLabel
+
 
 
 
 
 var score = 0
 var helped_kid = 0
-var safety_score
+var safety_score = 0
 
 func _ready():
 	# 确保游戏开始时弹窗是看不见的
@@ -34,6 +36,17 @@ func update_score():
 	score_label.text = str(score)
 
 # safety score
+func add_Safetypoint():
+	safety_score += 1
+	update_Safetyscore()
+	
+func sub_Safetypoint():
+	safety_score -= 1
+	update_Safetyscore()
+		
+func update_Safetyscore():
+	safety_label.text = str(safety_score)
+
 
 # 邀请玩家参加生日聚会
 func show_invitation():

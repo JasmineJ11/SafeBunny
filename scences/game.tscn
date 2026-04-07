@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dtdncmd6dus80" path="res://assets/sprites/world_tileset.png" id="2_jx3ei"]
 [ext_resource type="FontFile" uid="uid://cuhjqidghnmi2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_lvua1"]
 [ext_resource type="PackedScene" uid="uid://c5mlhavxl1xkw" path="res://scences/platform.tscn" id="3_xfuu6"]
+[ext_resource type="PackedScene" uid="uid://bc3x3xjbt17m2" path="res://scences/npc.tscn" id="4_4h201"]
 [ext_resource type="PackedScene" uid="uid://fxfqxn8xqpji" path="res://scences/coin.tscn" id="4_cfxbr"]
 [ext_resource type="PackedScene" uid="uid://b56mfdkim1gbm" path="res://scences/killzone.tscn" id="5_b174u"]
 [ext_resource type="PackedScene" uid="uid://f0ft3ft1vw76" path="res://scences/slime.tscn" id="6_yru2q"]
@@ -386,6 +387,9 @@ unique_name_in_owner = true
 
 [node name="Eevent" type="Node" parent="." unique_id=1205761535]
 
+[node name="NPC" parent="Eevent" unique_id=2010564350 instance=ExtResource("4_4h201")]
+position = Vector2(147, 1)
+
 [node name="SadKids" type="Node" parent="Eevent" unique_id=426082802]
 
 [node name="SadKid2" parent="Eevent/SadKids" unique_id=215682837 instance=ExtResource("20_udhis")]
@@ -563,7 +567,8 @@ offset_bottom = 97.10959
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_nn1ya")
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/SafetyPanel" unique_id=823113584]
+[node name="SafetyLabel" type="Label" parent="CanvasLayer/SafetyPanel" unique_id=823113584]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 13.5
 offset_top = 67.0
@@ -575,7 +580,7 @@ theme_override_font_sizes/font_size = 19
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="ScoreLabel2" type="Label" parent="CanvasLayer/SafetyPanel" unique_id=1345559416]
+[node name="SafetyLabel2" type="Label" parent="CanvasLayer/SafetyPanel" unique_id=1345559416]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 2.0
@@ -903,8 +908,6 @@ icon_alignment = 1
 [connection signal="body_entered" from="RedSlime" to="RedSlime" method="_on_body_entered"]
 [connection signal="pressed" from="CanvasLayer/AttackPanel/AttackButton" to="RedSlime" method="_on_button_pressed"]
 [connection signal="text_submitted" from="CanvasLayer/AttackPanel/AttackLineEdit" to="RedSlime" method="_on_line_edit_text_submitted"]
-[connection signal="pressed" from="CanvasLayer/ChestPanel/YesButton" to="Eevent/TreasureChests/TreasureChest" method="_on_yes_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/ChestPanel/NoButton" to="Eevent/TreasureChests/TreasureChest" method="_on_no_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PasswordPanel/ButtonWeak" to="Eevent/Monster" method="_on_button_weak_pressed"]
 [connection signal="pressed" from="CanvasLayer/PasswordPanel/ButtonStrong" to="Eevent/Monster" method="_on_button_strong_pressed"]
 [connection signal="pressed" from="CanvasLayer/BullyPanel/ButtonL" to="Eevent/BullyMessage" method="_on_button_l_pressed"]

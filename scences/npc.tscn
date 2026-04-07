@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bc3x3xjbt17m2"]
+
+[ext_resource type="Texture2D" uid="uid://cfsd4p82x83g" path="res://assets/sprites/knight.png" id="1_hqjbo"]
+[ext_resource type="Script" uid="uid://v5nl2bumwc25" path="res://scripts/npc.gd" id="1_j5xyk"]
+[ext_resource type="AudioStream" uid="uid://bbyscdx6bv021" path="res://assets/sounds/success.mp3" id="2_j5xyk"]
+[ext_resource type="AudioStream" uid="uid://d34oeeem4u06v" path="res://assets/sounds/fail.mp3" id="3_mf1nl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjtkf"]
+atlas = ExtResource("1_hqjbo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hywbl"]
+atlas = ExtResource("1_hqjbo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8svkc"]
+atlas = ExtResource("1_hqjbo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia7di"]
+atlas = ExtResource("1_hqjbo")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_anyyw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjtkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hywbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8svkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia7di")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34wbt"]
+radius = 6.3245554
+
+[node name="NPC" type="Area2D" unique_id=2010564350]
+collision_mask = 2
+script = ExtResource("1_j5xyk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=921392974]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_anyyw")
+autoplay = "default"
+frame_progress = 0.35661486
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1023363469]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_34wbt")
+
+[node name="SuccessSound" type="AudioStreamPlayer2D" parent="." unique_id=1497711327]
+process_mode = 3
+stream = ExtResource("2_j5xyk")
+
+[node name="FailSound" type="AudioStreamPlayer2D" parent="." unique_id=946567911]
+process_mode = 3
+stream = ExtResource("3_mf1nl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
