@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bufjn2npg1vin"]
+
+[ext_resource type="Script" uid="uid://bmtkosdnpijx" path="res://scripts/check_point.gd" id="1_8na80"]
+[ext_resource type="Texture2D" uid="uid://cgej8pdoc3q0u" path="res://assets/sprites/Basic Furniture.png" id="1_bnlvs"]
+[ext_resource type="AudioStream" uid="uid://deqajiwau8m4o" path="res://assets/sounds/checkpoint.mp3" id="2_315ts"]
+[ext_resource type="FontFile" uid="uid://jgv88f60q8tg" path="res://assets/fonts/PixelOperator8.ttf" id="3_8na80"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sejtu"]
+atlas = ExtResource("1_bnlvs")
+region = Rect2(98, 49, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_315ts"]
+atlas = ExtResource("1_bnlvs")
+region = Rect2(98, 47, 13, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8na80"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sejtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_315ts")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krxds"]
+size = Vector2(14, 18)
+
+[node name="CheckPoint" type="Area2D" unique_id=2083409328]
+collision_mask = 2
+script = ExtResource("1_8na80")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1184023899]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_8na80")
+autoplay = "default"
+frame_progress = 0.3421529
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=510280531]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_krxds")
+
+[node name="UpdateSound" type="AudioStreamPlayer" parent="." unique_id=1757390776]
+stream = ExtResource("2_315ts")
+
+[node name="Label3" type="Label" parent="." unique_id=1162054333]
+offset_left = -34.0
+offset_top = -25.0
+offset_right = 34.0
+offset_bottom = -14.0
+theme_override_fonts/font = ExtResource("3_8na80")
+theme_override_font_sizes/font_size = 8
+text = "ChcekPoint"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

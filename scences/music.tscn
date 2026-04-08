@@ -2,6 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://do4fk6jxew1hn" path="res://assets/music/time_for_adventure.mp3" id="1_t64sb"]
 
-[node name="Music" type="AudioStreamPlayer2D" unique_id=1498988355]
+[node name="Music" type="AudioStreamPlayer" unique_id=274342450]
 stream = ExtResource("1_t64sb")
 autoplay = true
+parameters/looping = true
