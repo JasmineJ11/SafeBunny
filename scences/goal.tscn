@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://faprxuk2d2e"]
+
+[ext_resource type="Texture2D" uid="uid://ua7co4xc8dlw" path="res://assets/sprites/Emoji_Spritesheet_Free.png" id="1_gi8nv"]
+[ext_resource type="Script" uid="uid://cvcbf5pamp7s" path="res://scripts/goal.gd" id="1_xvr3c"]
+[ext_resource type="AudioStream" uid="uid://bo5ydpc6s2fw5" path="res://assets/sounds/goal.mp3" id="2_qwphr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwphr"]
+atlas = ExtResource("1_gi8nv")
+region = Rect2(96, 260, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvr3c"]
+atlas = ExtResource("1_gi8nv")
+region = Rect2(96, 256, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3yku6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwphr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvr3c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.5
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tjs6d"]
+radius = 30.88689
+
+[node name="Goal" type="Area2D" unique_id=1859733500]
+collision_mask = 2
+script = ExtResource("1_xvr3c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1463785972]
+position = Vector2(0, -30)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_3yku6")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1384751320]
+position = Vector2(0, -32)
+shape = SubResource("CircleShape2D_tjs6d")
+
+[node name="GoalSound" type="AudioStreamPlayer" parent="." unique_id=333381171]
+stream = ExtResource("2_qwphr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

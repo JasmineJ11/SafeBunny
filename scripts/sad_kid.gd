@@ -40,8 +40,7 @@ func _on_love_button_pressed() -> void:
 	if confetti_particles:
 		confetti_particles.restart()
 	
-	game_manager.sub_point()
-	game_manager.add_helped_kid()
+	game_manager.give_heart_to_kid()
 	
 	
 
