@@ -110,6 +110,7 @@ func _on_yes_button_pressed():
 	#game_manager.sub_Safetypoint()
 	if data["yes_score"] > 0: game_manager.add_Safetypoint()
 	elif data["yes_score"] < 0: game_manager.sub_Safetypoint()
+	game_manager.current_event_index -= 1
 	finish_event()
 
 # --- 4. Click NO ---
