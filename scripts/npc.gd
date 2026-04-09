@@ -61,7 +61,7 @@ func _on_body_entered(body):
 		else:
 			chest_panel.show()
 			game_manager.play_notification_sound()
-			label.text = "Have a nice day ^^"
+			label.text = "Have a nice day ^^☀️😎"
 			await get_tree().create_timer(2.5).timeout
 			chest_panel.hide()
 			

@@ -6,6 +6,8 @@ extends Area2D
 @onready var line_edit: LineEdit = %AttackLineEdit
 @onready var goodresults: AudioStreamPlayer = $goodresults
 @onready var wrong: AudioStreamPlayer = $wrong
+@onready var game_manager: Node = %GameManager
+
 
 
 
@@ -53,7 +55,9 @@ func _on_line_edit_text_submitted(password: String) -> void:
 	var score = 0
 	var result_text = ""
 	if password.length() < 6:
-		attack_label.text = "Too short! (Min 6 chars) ❌\nTry create a strong one!"
+		attack_label.text = "Too short! (Min 6 chars)\nTry create a strong one!
+							❌ You lost 1 safety point."
+		game_manager.sub_Safetypoint()
 		wrong.play()
 		reset_panel()
 		return
@@ -80,17 +84,22 @@ func _on_line_edit_text_submitted(password: String) -> void:
 	result_text += "Lower " + ("✅" if has_lower else "❌") + "  "
 	result_text += "Special " + ("✅" if has_special else "❌") + "\n"
 	
-	attack_label.text = result_text + "\n👾 Damage: " + str(current_damage)
+	attack_label.text = result_text + "👾 Damage: " + str(current_damage) + "\n"
 
 	if current_damage >= monster_hp:
-		attack_label.text += "\nCRITICAL HIT! Monster Defeated! 🎉"
+		attack_label.text += "🎉 CRITICAL HIT! Monster Defeated!
+		😎 You got 1 safety point!"
 		goodresults.play()
+		game_manager.add_Safetypoint()
 		await get_tree().create_timer(4.5).timeout
 		attack_panel.hide()
 		player.is_paused = false
 		reset_panel()
 	else:
-		attack_label.text += "\n👾 HP Remaining: " + str(max(0, remaining_hp)) + "\nTry create a strong one!"
+		attack_label.text += "👾 HP Remaining: " + str(max(0, remaining_hp)) + "\n⚠️ Try create a strong one!
+		❌ You lost 1 safety point."
+		game_manager.sub_Safetypoint()
+		
 		wrong.play()
 		await get_tree().create_timer(3).timeout
 		reset_panel()

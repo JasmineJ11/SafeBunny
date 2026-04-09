@@ -24,7 +24,7 @@ func start_pwevent():
 	password_panel.show()
 	button_weak.show()
 	button_strong.show()
-	password_label.text = "👾 Someone is attacking your account!
+	password_label.text = "👾 Danger! Someone is attacking your account!
 🔐 Choose a password to protect yourself!"
 
 
@@ -38,9 +38,9 @@ func _on_button_weak_pressed() -> void:
 	⚠️ It can be guessed easily!"
 	await get_tree().create_timer(2.5).timeout
 	password_panel.modulate = Color.WHITE
-	password_label.text = "❗ You lose 1 heart!"
+	password_label.text = "❗ You lose 1 safety point!"
 	await get_tree().create_timer(2).timeout
-	game_manager.sub_point()
+	game_manager.sub_Safetypoint()
 	
 	finish_event()
 	
@@ -54,11 +54,11 @@ func _on_button_strong_pressed() -> void:
 	await get_tree().create_timer(2.5).timeout
 	password_panel.modulate = Color.WHITE
 	password_label.text = "✨ You protected your information!
-	✨ You got 1 heart!"
+	✨ You got 1 safety point!"
 	await get_tree().create_timer(2.5).timeout
 	password_label.text = "🐱 Complex and unpredictable passwords are the safest!"
 	await get_tree().create_timer(3).timeout
-	game_manager.add_point()
+	game_manager.add_Safetypoint()
 	finish_event()
 	
 func finish_event():

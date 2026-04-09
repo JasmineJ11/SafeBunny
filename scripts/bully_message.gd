@@ -103,34 +103,34 @@ extends Area2D
 var dialogue_data = {
 	0: {
 		"text": "📱 You received a message!",
-		"options": ["Read now", "", ""],
+		"options": ["📖 Read now", "", ""],
 		"correct": 1 
 	},
 	1: {
-		"text": "👾： Haha, do you know that you look very weird? Are you sure you are going to the party?",
-		"options": ["😡 Insult back", "😢 Feel bad and don’t want to go", "✨ Ignore and keep going to the party"],
+		"text": "👾： Haha… you look so weird 😒\nWhy are you even here?",
+		"options": ["😡 Insult back", "😢 Feel hurt and stop", "✨ Ignore and keep going"],
 		"correct": 2, 
 		"feedback": [
-			"🐱: Fighting back makes it worse.",
-			"🐱: Others' words don't define you."
+			"🐱 Fighting back only makes it worse.\n💛 Stay calm. ",
+			"🐱 Their words don’t define you.\n🌟 You are enough."
 		]
 	},
 	2: {
-		"text": "👾： Ohhh NOBODY wants you at the party, you better not come. 😒",
-		"options": ["😡 Reply angrily", "😟 Ask your friend if they don’t like you",  "✨ Ignore and tell your parents or teacher"],
+		"text": "👾： No one likes you 😏\nWhy don’t you just leave?",
+		"options": ["😡 Reply angrily", "😟 Ask if it's true",  "✨ Ignore and talk to a trusted adult"],
 		"correct": 2,
 		"feedback": [
-			"😡: Anger won't solve this.\n🐱: Stay calm and find help.",
-			"😰: They won't give you a real answer.\n🐱: Don't seek their approval."
+			"🐱 Anger won’t help here.\n🛡️ Protect your energy. ",
+			"🐱 Don’t look for approval from someone who hurts you.\n💛 You deserve better. "
 		]
 	},
 	3: {
-		"text": "👾： ANSWER NOW!! Why aren’t you answering!! 😡",
+		"text": "👾： ANSWER ME NOW!! 😡\nWhy are you ignoring me?!",
 		"options": ["😢 Keep explain", "😡 Fight back", "✨ Screenshot, report and block"],
 		"correct": 2, 
 		"feedback": [
-			"😰: You don't need to explain to a bully.\n🐱: Protect your peace.",
-			"😡: Don't let them bait your anger.\n🐱: Keep the evidence instead."
+			"🐱 You don’t need to explain yourself.\n💛 Stay safe.",
+			"🐱 Don’t let them control your emotions.\n📸 Keep evidence instead."
 		]
 	}
 }
@@ -188,9 +188,8 @@ func handle_correct():
 	if success_sound: success_sound.play()
 	bully_label.text = "🚨 This is online harassment!
 	✨ You protected yourself!
-	❤️ You got one heart!"
-	game_manager.score += 1
-	game_manager.update_score()
+	🛡️ You got 1 safety point"
+	game_manager.add_Safetypoint()
 	hide_buttons()
 	await get_tree().create_timer(3.0).timeout
 	if current_round < 3:
@@ -205,12 +204,11 @@ func handle_wrong(index: int):
 	hide_buttons()
 	
 	var feedback_text = dialogue_data[current_round]["feedback"][index]
-	bully_label.text = "❌ " + feedback_text
+	bully_label.text = feedback_text
 	await get_tree().create_timer(3).timeout
-	bully_label.text = "❗ You lose 1 heart. Try again!"
-	# 惩罚
-	game_manager.score -= 1
-	game_manager.update_score()
+	bully_label.text = "❗ You lose 1 safety point. 
+	✨ Try again!"
+	game_manager.sub_Safetypoint()
 	
 	await get_tree().create_timer(1.5).timeout
 	show_round() # 循环：让玩家重新选这一轮
@@ -219,10 +217,10 @@ func hide_buttons():
 	btn_l.hide(); btn_m.hide(); btn_r.hide()
 
 func finish_event():
-	bully_label.text = "✨ You stayed safe and strong!\n✨ Bully defeated."
+	bully_label.text = "💛 You stayed calm and strong \n✨ The bully lost their power."
 	await get_tree().create_timer(3.0).timeout
-	bully_label.text = "✨ When facing online bullying: ignore → seek adult help → protect yourself."
-	await get_tree().create_timer(3.5).timeout
+	bully_label.text = "🛡️ Remember:\n✨ Ignore → Tell a trusted adult → Protect yourself "
+	await get_tree().create_timer(4).timeout
 	bully_panel.hide()
 	is_triggered = false
 

@@ -1,18 +1,10 @@
 extends CharacterBody2D
-
-
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
-
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var respawn_position: Vector2 = global_position
 
 var is_paused= false
-
-
-	
-
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -23,7 +15,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction -1，0，1
-	
 	var direction := Input.get_axis("move_left", "move_right")
 	if is_paused:
 		direction = 0
@@ -43,7 +34,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		animated_sprite.play("jump")
 	
-	
 	if direction:
 		velocity.x = direction * SPEED
 	else:
@@ -51,6 +41,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func update_checkpoint(global_position: Vector2):
-	respawn_position = global_position
+func update_checkpoint(now_position: Vector2):
+	respawn_position = now_position
 	print("Checkpoint updated!")

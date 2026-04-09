@@ -63,14 +63,14 @@ func _on_yes_button_pressed():
 	await get_tree().create_timer(2.5).timeout
 	chest_panel.modulate = Color.WHITE # change color back
 	
-	label.text = "❗ You lose 1 heart!"
+	label.text = "❗ You lose 1 safety point!"
 	
 	# lose 1 point
 	game_manager.sub_Safetypoint()
 
 	
 	await get_tree().create_timer(3.0).timeout
-	label.text = "🐱 \"Real rewards don’t try to lure you with money.\""
+	label.text = "🐱 Real rewards don’t try to lure you with money."
 	await get_tree().create_timer(3.0).timeout
 	finish_event()
 
@@ -88,11 +88,11 @@ func _on_no_button_pressed():
 	
 	# feedback
 	chest_panel.modulate = Color(0.5, 1, 0.5) # change color to green
-	label.text = "✅ This is a scam!\n✨ You protected your information! You got 1 heart!"
+	label.text = "✅ This is a scam!\n✨ You protected your information! You got 1 safety point!"
 	await get_tree().create_timer(4.0).timeout
 	
 	chest_panel.modulate = Color.WHITE 
-	label.text = "🐱 \"The bigger the reward sounds, the more careful you should be.\""
+	label.text = "🐱 The bigger the reward sounds, the more careful you should be."
 	
 	await get_tree().create_timer(4.0).timeout
 	finish_event()
