@@ -964,6 +964,7 @@ autowrap_mode = 2
 
 [node name="AttackPanel" type="Panel" parent="Panels" unique_id=1090016136]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1021,6 +1022,7 @@ placeholder_text = "Enter Password: "
 
 [node name="ChestPanel" type="Panel" parent="Panels" unique_id=258346170]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1086,6 +1088,7 @@ script = ExtResource("13_cxnw8")
 
 [node name="PasswordPanel" type="Panel" parent="Panels" unique_id=29736009]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1136,6 +1139,7 @@ flat = true
 
 [node name="BullyPanel" type="Panel" parent="Panels" unique_id=831553504]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1242,6 +1246,16 @@ texture = ExtResource("12_ua0fu")
 stretch_mode = 6
 script = ExtResource("13_cxnw8")
 
+[node name="NameLineEdit" type="LineEdit" parent="Panels/SMSPanel" unique_id=1690129366]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 197.75507
+offset_top = 184.375
+offset_right = 620.75507
+offset_bottom = 243.375
+theme_override_fonts/font = ExtResource("7_cho2i")
+theme_override_font_sizes/font_size = 22
+
 [node name="GoalPanel" type="Panel" parent="Panels" unique_id=1581974439]
 unique_name_in_owner = true
 anchors_preset = 8
@@ -1250,9 +1264,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -444.75507
-offset_top = -143.375
+offset_top = -331.0
 offset_right = 444.75507
-offset_bottom = 229.0
+offset_bottom = 326.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ua0fu")
@@ -1261,9 +1275,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_ua0fu")
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 57.755066
-offset_top = 129.375
+offset_top = 217.0
 offset_right = 834.75507
-offset_bottom = 217.375
+offset_bottom = 522.0
 theme_override_fonts/font = ExtResource("7_cho2i")
 theme_override_font_sizes/font_size = 26
 autowrap_mode = 2
@@ -1272,9 +1286,9 @@ autowrap_mode = 2
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 342.75507
-offset_top = 277.375
+offset_top = 540.375
 offset_right = 419.75507
-offset_bottom = 324.375
+offset_bottom = 587.375
 theme_override_fonts/font = ExtResource("7_cho2i")
 theme_override_font_sizes/font_size = 26
 flat = true
@@ -1292,6 +1306,7 @@ script = ExtResource("13_cxnw8")
 
 [node name="LoveButton" type="Button" parent="Panels" unique_id=1390794964]
 unique_name_in_owner = true
+visible = false
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.67
