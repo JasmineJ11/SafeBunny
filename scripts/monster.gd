@@ -6,6 +6,13 @@ extends Area2D
 @onready var fail_sound: AudioStreamPlayer2D = $FailSound
 @onready var success_sound: AudioStreamPlayer2D = $SuccessSound
 @onready var game_manager: Node = %GameManager
+@onready var player: Node = get_parent().get_node_or_null("Player")
+
+
+func set_player_paused(paused: bool) -> void:
+	if player:
+		player.set("is_paused", paused)
+		
 
 
 var is_triggered = false 
@@ -15,6 +22,8 @@ func _ready():
 	
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and not is_triggered:
+		# ensure we target the actual player instance that triggered the area
+		player = body
 		is_triggered = true
 		start_pwevent()
 		game_manager.play_notification_sound()
@@ -22,6 +31,7 @@ func _on_body_entered(body: Node2D) -> void:
 		
 func start_pwevent():
 	password_panel.show()
+	set_player_paused(true)
 	button_weak.show()
 	button_strong.show()
 	password_label.text = "👾 Danger! Someone is attacking your account!
@@ -62,6 +72,7 @@ func _on_button_strong_pressed() -> void:
 	finish_event()
 	
 func finish_event():
+	set_player_paused(false)
 	password_panel.hide()
 	password_panel.modulate = Color.WHITE 
 	is_triggered = false

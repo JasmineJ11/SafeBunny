@@ -18,7 +18,7 @@ func _ready():
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and not is_happy:
 		love_button.show()
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2.5).timeout
 		love_button.hide()
 		
 		

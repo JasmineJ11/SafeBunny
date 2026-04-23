@@ -12,7 +12,12 @@ extends Area2D
 
 @onready var yes_button: Button = %YesButton
 @onready var no_button: Button = %NoButton
+@onready var player: Node = get_parent().get_node_or_null("Player")
 
+
+func set_player_paused(paused: bool) -> void:
+	if player:
+		player.set("is_paused", paused)
 
 var event_data = [
 	{
@@ -53,7 +58,9 @@ func _ready():
 
 # --- 1. player touch the chest ---
 func _on_body_entered(body):
+	
 	if body.name == "Player" and not is_triggered:
+		player = body
 		# 检查是否还有对话可以进行
 		if game_manager.current_event_index < event_data.size():
 			is_triggered = true
@@ -70,6 +77,7 @@ func _on_body_entered(body):
 func start_npc_event(index):
 	var data = event_data[index]
 	chest_panel.show()
+	set_player_paused(true)
 	yes_button.show()
 	no_button.show()
 	
@@ -137,6 +145,7 @@ func _on_no_button_pressed():
 # --- 5. end and reset ---
 func finish_event():
 	chest_panel.hide()
+	set_player_paused(false)
 	chest_panel.modulate = Color.WHITE 
 	game_manager.current_event_index += 1
 	is_triggered = false
