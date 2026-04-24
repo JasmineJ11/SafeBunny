@@ -447,9 +447,6 @@ unique_name_in_owner = true
 
 [node name="Eevent" type="Node" parent="." unique_id=1205761535]
 
-[node name="RedSlime" parent="Eevent" unique_id=446283791 instance=ExtResource("7_f7b3b")]
-position = Vector2(816, -303)
-
 [node name="SadKids" type="Node" parent="Eevent" unique_id=426082802]
 
 [node name="SadKid2" parent="Eevent/SadKids" unique_id=215682837 instance=ExtResource("20_udhis")]
@@ -488,13 +485,6 @@ position = Vector2(3383, -240)
 unique_name_in_owner = true
 position = Vector2(462, 12)
 
-[node name="BullyMessage" parent="Eevent" unique_id=561950687 instance=ExtResource("19_6hct1")]
-position = Vector2(1848, -291)
-script = ExtResource("19_udhis")
-
-[node name="Monster" parent="Eevent" unique_id=289106508 instance=ExtResource("18_3sylk")]
-position = Vector2(2486, -66)
-
 [node name="TreasureChests" type="Node" parent="Eevent" unique_id=677872652]
 
 [node name="TreasureChest" parent="Eevent/TreasureChests" unique_id=139621350 instance=ExtResource("15_4jcax")]
@@ -518,6 +508,16 @@ position = Vector2(309, -112)
 
 [node name="NPC5" parent="Eevent/NPCs" unique_id=990088894 instance=ExtResource("4_4h201")]
 position = Vector2(551, -112)
+
+[node name="RedSlime" parent="Eevent" unique_id=446283791 instance=ExtResource("7_f7b3b")]
+position = Vector2(816, -303)
+
+[node name="BullyMessage" parent="Eevent" unique_id=561950687 instance=ExtResource("19_6hct1")]
+position = Vector2(1848, -291)
+script = ExtResource("19_udhis")
+
+[node name="Monster" parent="Eevent" unique_id=289106508 instance=ExtResource("18_3sylk")]
+position = Vector2(2486, -66)
 
 [node name="Player" parent="." unique_id=1193462206 instance=ExtResource("1_lbs7c")]
 position = Vector2(33, 32)
@@ -1346,7 +1346,6 @@ position = Vector2(978, -344)
 [node name="CheckPoint2" parent="CheckPoints" unique_id=537463997 instance=ExtResource("23_s3man")]
 position = Vector2(819, -46)
 
-[connection signal="body_entered" from="Eevent/RedSlime" to="Eevent/RedSlime" method="_on_body_entered"]
 [connection signal="body_entered" from="Eevent/SadKids/SadKid2" to="Eevent/SadKids/SadKid2" method="_on_body_entered"]
 [connection signal="body_entered" from="Eevent/SadKids/SadKid10" to="Eevent/SadKids/SadKid10" method="_on_body_entered"]
 [connection signal="body_entered" from="Eevent/SadKids/SadKid3" to="Eevent/SadKids/SadKid3" method="_on_body_entered"]
@@ -1356,6 +1355,7 @@ position = Vector2(819, -46)
 [connection signal="body_entered" from="Eevent/SadKids/SadKid9" to="Eevent/SadKids/SadKid9" method="_on_body_entered"]
 [connection signal="body_entered" from="Eevent/SadKids/SadKid8" to="Eevent/SadKids/SadKid8" method="_on_body_entered"]
 [connection signal="body_entered" from="Eevent/SadKids/SadKid4" to="Eevent/SadKids/SadKid4" method="_on_body_entered"]
+[connection signal="body_entered" from="Eevent/RedSlime" to="Eevent/RedSlime" method="_on_body_entered"]
 [connection signal="body_entered" from="Eevent/BullyMessage" to="Eevent/BullyMessage" method="_on_body_entered"]
 [connection signal="pressed" from="Panels/AttackPanel/AttackButton" to="Eevent/RedSlime" method="_on_button_pressed"]
 [connection signal="text_submitted" from="Panels/AttackPanel/AttackLineEdit" to="Eevent/RedSlime" method="_on_line_edit_text_submitted"]

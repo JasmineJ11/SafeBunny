@@ -1,92 +1,3 @@
-#extends Area2D
-#
-#@onready var game_manager: Node = %GameManager
-#@onready var bully_panel: Panel = %BullyPanel
-#@onready var bully_label: Label = %BullyLabel
-#@onready var button_l: Button = %ButtonL
-#@onready var button_m: Button = %ButtonM
-#@onready var button_r: Button = %ButtonR
-#
-#
-#
-#var is_triggered = false 
-#
-#func _ready():
-	#bully_panel.hide()
-	#
-#func _on_body_entered(body: Node2D) -> void:
-	#if body.name == "Player" and not is_triggered:
-		#is_triggered = true
-		#start_event()
-	#
-#func start_event():
-	#bully_panel.show()
-	#bully_label.text = "📱 You recieved a meeage!"
-	#button_l.text = "Read now"
-#
-#
-#func _on_button_l_pressed() -> void:
-	#button_l.hide()
-	#MessageFirst()
-	#
-#
-##func _on_button_m_pressed() -> void:
-	#
-	#
-#func MessageFirst():
-	#bully_label.text = "👾 Haha, do you know that you look very weird? 😂"
-	#await get_tree().create_timer(3).timeout
-	#bully_label.text = "👾 Are you sure you are going to the party? 😂"
-	#button_l.show() # 重新显示中间按钮
-	#
-	#button_l.text = "😡 Insult back"
-	#button_m.text = "😢 Feel bad and don’t want to go"
-	#button_r.text = "✨ Ignore and keep going to the party"
-	#
-	#
-	#
-	#
-#
-#
-	##button_weak.hide()
-	##button_strong.hide()
-	##if fail_sound: fail_sound.play()
-	##password_panel.modulate = Color(0.977, 0.609, 0.6, 1.0) 
-	##password_label.text = "❗ OH NOOO! This password is too week!
-	##⚠️ It can be guessed easily!"
-	##await get_tree().create_timer(2.5).timeout
-	##password_panel.modulate = Color.WHITE
-	##password_label.text = "❗ You lose 1 heart!"
-	##await get_tree().create_timer(2).timeout
-	##game_manager.score -= 1
-	##game_manager.update_score()
-	##finish_event()
-	##
-##
-##func _on_button_strong_pressed() -> void:
-	##button_weak.hide()
-	##button_strong.hide()
-	##if success_sound: success_sound.play()
-	##password_panel.modulate = Color(0.5, 1, 0.5) 
-	##password_label.text = "🛡 Strong password created!"
-	##await get_tree().create_timer(2.5).timeout
-	##password_panel.modulate = Color.WHITE
-	##password_label.text = "✨ You protected your information!
-	##✨ You got 1 heart!"
-	##await get_tree().create_timer(2.5).timeout
-	##password_label.text = "🐱 Complex and unpredictable passwords are the safest!"
-	##await get_tree().create_timer(3).timeout
-	##game_manager.score += 1
-	##game_manager.update_score()
-	##finish_event()
-	##
-##func finish_event():
-	##password_panel.hide()
-	##password_panel.modulate = Color.WHITE 
-	##is_triggered = false
-	##get_tree().paused = false
-	
-	
 extends Area2D
 
 
@@ -166,6 +77,12 @@ func show_round():
 		btn_l.text = data["options"][0]
 		btn_m.text = data["options"][1]
 		btn_r.text = data["options"][2]
+		
+		
+# ---  信号连接 ---
+func _on_button_l_pressed(): _on_button_pressed(0)
+func _on_button_m_pressed(): _on_button_pressed(1)
+func _on_button_r_pressed(): _on_button_pressed(2)
 
 # --- 5. 按钮点击统一处理 ---
 func _on_button_pressed(index: int):
@@ -222,10 +139,7 @@ func finish_event():
 	bully_label.text = "🛡️ Remember:\n✨ Ignore → Tell a trusted adult → Protect yourself "
 	await get_tree().create_timer(4).timeout
 	bully_panel.hide()
-	is_triggered = false
+	is_triggered = true
 
-# --- 8. 信号连接 ---
-func _on_button_l_pressed(): _on_button_pressed(0)
-func _on_button_m_pressed(): _on_button_pressed(1)
-func _on_button_r_pressed(): _on_button_pressed(2)
+
 	

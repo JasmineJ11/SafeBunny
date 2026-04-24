@@ -20,6 +20,7 @@ func set_player_paused(paused: bool) -> void:
 		player.set("is_paused", paused)
 
 var event_data = [
+	
 	{
 		"question": "Hi! 😊\nWhat’s your name and home address?\nI want to send you a gift! 🎁",
 		"yes_text": "❗ That’s dangerous!\n⚠️ Your home address is private.",
@@ -31,6 +32,13 @@ var event_data = [
 		"question": "Quick! 🚨\nYour account is being hacked!\nSend me your password to save it!",
 		"yes_text": "❗ Stop! Never share your password,\neven with 'support'!",
 		"no_text": "Correct! ✅\nReal admins will never ask for your password.",
+		"yes_score": -1,
+		"no_score": 1
+	},
+	{
+		"question": "Your friend says classmates are posting mean comments about him online.💔Will you refuse to help him?",
+		"yes_text": "❗ Ignoring it can make things worse.\nSupport your friend and ask a trusted adult for help.",
+		"no_text": "Great choice! ✅\nComfort your friend and report the bullying to a trusted adult.",
 		"yes_score": -1,
 		"no_score": 1
 	},
@@ -48,6 +56,7 @@ var event_data = [
 		"yes_score": -1,
 		"no_score": 1
 	}
+	
 ]
 
 var is_triggered = false 
@@ -118,8 +127,7 @@ func _on_yes_button_pressed():
 	#game_manager.sub_Safetypoint()
 	if data["yes_score"] > 0: game_manager.add_Safetypoint()
 	elif data["yes_score"] < 0: game_manager.sub_Safetypoint()
-	game_manager.current_event_index -= 1
-	finish_event()
+	finish_event(data["yes_score"] > 0)
 
 # --- 4. Click NO ---
 func _on_no_button_pressed():
@@ -140,14 +148,15 @@ func _on_no_button_pressed():
 	if data["no_score"] > 0: game_manager.add_Safetypoint()
 	elif data["no_score"] < 0: game_manager.sub_Safetypoint()
 	
-	finish_event()
+	finish_event(data["no_score"] > 0)
 
 # --- 5. end and reset ---
-func finish_event():
+func finish_event(advance_to_next: bool = true):
 	chest_panel.hide()
 	set_player_paused(false)
 	chest_panel.modulate = Color.WHITE 
-	game_manager.current_event_index += 1
+	if advance_to_next:
+		game_manager.current_event_index += 1
 	is_triggered = false
 	# 3. 任务完成，断开按钮连接
 	if yes_button.pressed.is_connected(_on_yes_button_pressed):
