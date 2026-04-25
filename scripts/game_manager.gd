@@ -12,12 +12,11 @@ extends Node
 @onready var yes: TextureRect = %Yes
 @onready var player: Node = get_parent().get_node_or_null("Player")
 
-var score = 0
-var helped_kid = 0
-var safety_score = 0
-var current_event_index = 0 # 记录当前进行到第几个对话 npc
+var score = 0 				# hearts collected
+var helped_kid = 0			# hearts given to others
+var safety_score = 0		# cybersecurity decision score
+var current_event_index = 0 # tracks sequential NPC events
 var total_collected = 0
-
 var invite_step = 0
 var waiting_for_name = true
 var player_name = ""
@@ -72,11 +71,10 @@ func give_heart_to_kid():
 #======================================================
 
 
-# 邀请玩家参加生日聚会
+
 func show_invitation():
 	sms_panel.show()
 	name_line_edit.hide()
-	
 	waiting_for_name = true
 	invite_step = 0
 
@@ -86,7 +84,6 @@ func show_invitation():
 	
 	if invite_button.pressed.is_connected(_on_invite_button_pressed):
 		invite_button.pressed.disconnect(_on_invite_button_pressed)
-	
 	invite_button.pressed.connect(_advance_invite_text)
 	play_notification_sound()
 
@@ -165,7 +162,7 @@ func show_game_over():
 	if goal_button.pressed.is_connected(_on_restart_button_pressed):
 		goal_button.pressed.disconnect(_on_restart_button_pressed)
 	
-	# 点击按钮不再直接重启，而是先执行“翻页”逻辑
+	# Click button to next text
 	goal_button.pressed.connect(_advance_goal_text)
 	
 func _advance_goal_text():

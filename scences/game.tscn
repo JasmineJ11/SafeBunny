@@ -445,78 +445,78 @@ tile_set = SubResource("TileSet_xfuu6")
 [node name="GameManager" parent="." unique_id=64977201 instance=ExtResource("18_6hct1")]
 unique_name_in_owner = true
 
-[node name="Eevent" type="Node" parent="." unique_id=1205761535]
+[node name="Event" type="Node" parent="." unique_id=1205761535]
 
-[node name="SadKids" type="Node" parent="Eevent" unique_id=426082802]
+[node name="SadKids" type="Node" parent="Event" unique_id=426082802]
 
-[node name="SadKid2" parent="Eevent/SadKids" unique_id=215682837 instance=ExtResource("20_udhis")]
+[node name="SadKid2" parent="Event/SadKids" unique_id=215682837 instance=ExtResource("20_udhis")]
 unique_name_in_owner = true
 position = Vector2(448, -243)
 
-[node name="SadKid10" parent="Eevent/SadKids" unique_id=2075898073 instance=ExtResource("20_udhis")]
+[node name="SadKid10" parent="Event/SadKids" unique_id=2075898073 instance=ExtResource("20_udhis")]
 unique_name_in_owner = true
 position = Vector2(629, -59)
 
-[node name="SadKid3" parent="Eevent/SadKids" unique_id=233333010 instance=ExtResource("20_udhis")]
+[node name="SadKid3" parent="Event/SadKids" unique_id=233333010 instance=ExtResource("20_udhis")]
 unique_name_in_owner = true
 position = Vector2(1070, -53)
 
-[node name="SadKid5" parent="Eevent/SadKids" unique_id=1964178557 instance=ExtResource("20_udhis")]
+[node name="SadKid5" parent="Event/SadKids" unique_id=1964178557 instance=ExtResource("20_udhis")]
 unique_name_in_owner = true
 position = Vector2(2103, -17)
 
-[node name="SadKid6" parent="Eevent/SadKids" unique_id=1342595716 instance=ExtResource("20_udhis")]
+[node name="SadKid6" parent="Event/SadKids" unique_id=1342595716 instance=ExtResource("20_udhis")]
 unique_name_in_owner = true
 position = Vector2(3064, -175)
 
-[node name="SadKid7" parent="Eevent/SadKids" unique_id=1359699499 instance=ExtResource("20_udhis")]
+[node name="SadKid7" parent="Event/SadKids" unique_id=1359699499 instance=ExtResource("20_udhis")]
 unique_name_in_owner = true
 position = Vector2(2809, -81)
 
-[node name="SadKid9" parent="Eevent/SadKids" unique_id=940722451 instance=ExtResource("20_udhis")]
+[node name="SadKid9" parent="Event/SadKids" unique_id=940722451 instance=ExtResource("20_udhis")]
 unique_name_in_owner = true
 position = Vector2(2215, -242)
 
-[node name="SadKid8" parent="Eevent/SadKids" unique_id=679937694 instance=ExtResource("20_udhis")]
+[node name="SadKid8" parent="Event/SadKids" unique_id=679937694 instance=ExtResource("20_udhis")]
 unique_name_in_owner = true
 position = Vector2(3383, -240)
 
-[node name="SadKid4" parent="Eevent/SadKids" unique_id=132104000 instance=ExtResource("20_udhis")]
+[node name="SadKid4" parent="Event/SadKids" unique_id=132104000 instance=ExtResource("20_udhis")]
 unique_name_in_owner = true
 position = Vector2(462, 12)
 
-[node name="TreasureChests" type="Node" parent="Eevent" unique_id=677872652]
+[node name="TreasureChests" type="Node" parent="Event" unique_id=677872652]
 
-[node name="TreasureChest" parent="Eevent/TreasureChests" unique_id=139621350 instance=ExtResource("15_4jcax")]
+[node name="TreasureChest" parent="Event/TreasureChests" unique_id=139621350 instance=ExtResource("15_4jcax")]
 process_mode = 3
 position = Vector2(3351, -128)
 collision_mask = 2
 
-[node name="NPCs" type="Node" parent="Eevent" unique_id=1194933996]
+[node name="NPCs" type="Node" parent="Event" unique_id=1194933996]
 
-[node name="NPC" parent="Eevent/NPCs" unique_id=2010564350 instance=ExtResource("4_4h201")]
+[node name="NPC" parent="Event/NPCs" unique_id=2010564350 instance=ExtResource("4_4h201")]
 position = Vector2(3287, -32)
 
-[node name="NPC2" parent="Eevent/NPCs" unique_id=308653216 instance=ExtResource("4_4h201")]
+[node name="NPC2" parent="Event/NPCs" unique_id=308653216 instance=ExtResource("4_4h201")]
 position = Vector2(1448, 17)
 
-[node name="NPC3" parent="Eevent/NPCs" unique_id=348680447 instance=ExtResource("4_4h201")]
+[node name="NPC3" parent="Event/NPCs" unique_id=348680447 instance=ExtResource("4_4h201")]
 position = Vector2(1416, -288)
 
-[node name="NPC4" parent="Eevent/NPCs" unique_id=238794938 instance=ExtResource("4_4h201")]
+[node name="NPC4" parent="Event/NPCs" unique_id=238794938 instance=ExtResource("4_4h201")]
 position = Vector2(309, -112)
 
-[node name="NPC5" parent="Eevent/NPCs" unique_id=990088894 instance=ExtResource("4_4h201")]
+[node name="NPC5" parent="Event/NPCs" unique_id=990088894 instance=ExtResource("4_4h201")]
 position = Vector2(551, -112)
 
-[node name="RedSlime" parent="Eevent" unique_id=446283791 instance=ExtResource("7_f7b3b")]
+[node name="RedSlime" parent="Event" unique_id=446283791 instance=ExtResource("7_f7b3b")]
 position = Vector2(816, -303)
 
-[node name="BullyMessage" parent="Eevent" unique_id=561950687 instance=ExtResource("19_6hct1")]
+[node name="BullyMessage" parent="Event" unique_id=561950687 instance=ExtResource("19_6hct1")]
 position = Vector2(1848, -291)
 script = ExtResource("19_udhis")
 
-[node name="Monster" parent="Eevent" unique_id=289106508 instance=ExtResource("18_3sylk")]
+[node name="Monster" parent="Event" unique_id=289106508 instance=ExtResource("18_3sylk")]
 position = Vector2(2486, -66)
 
 [node name="Player" parent="." unique_id=1193462206 instance=ExtResource("1_lbs7c")]
@@ -1346,23 +1346,23 @@ position = Vector2(978, -344)
 [node name="CheckPoint2" parent="CheckPoints" unique_id=537463997 instance=ExtResource("23_s3man")]
 position = Vector2(819, -46)
 
-[connection signal="body_entered" from="Eevent/SadKids/SadKid2" to="Eevent/SadKids/SadKid2" method="_on_body_entered"]
-[connection signal="body_entered" from="Eevent/SadKids/SadKid10" to="Eevent/SadKids/SadKid10" method="_on_body_entered"]
-[connection signal="body_entered" from="Eevent/SadKids/SadKid3" to="Eevent/SadKids/SadKid3" method="_on_body_entered"]
-[connection signal="body_entered" from="Eevent/SadKids/SadKid5" to="Eevent/SadKids/SadKid5" method="_on_body_entered"]
-[connection signal="body_entered" from="Eevent/SadKids/SadKid6" to="Eevent/SadKids/SadKid6" method="_on_body_entered"]
-[connection signal="body_entered" from="Eevent/SadKids/SadKid7" to="Eevent/SadKids/SadKid7" method="_on_body_entered"]
-[connection signal="body_entered" from="Eevent/SadKids/SadKid9" to="Eevent/SadKids/SadKid9" method="_on_body_entered"]
-[connection signal="body_entered" from="Eevent/SadKids/SadKid8" to="Eevent/SadKids/SadKid8" method="_on_body_entered"]
-[connection signal="body_entered" from="Eevent/SadKids/SadKid4" to="Eevent/SadKids/SadKid4" method="_on_body_entered"]
-[connection signal="body_entered" from="Eevent/RedSlime" to="Eevent/RedSlime" method="_on_body_entered"]
-[connection signal="body_entered" from="Eevent/BullyMessage" to="Eevent/BullyMessage" method="_on_body_entered"]
-[connection signal="pressed" from="Panels/AttackPanel/AttackButton" to="Eevent/RedSlime" method="_on_button_pressed"]
-[connection signal="text_submitted" from="Panels/AttackPanel/AttackLineEdit" to="Eevent/RedSlime" method="_on_line_edit_text_submitted"]
-[connection signal="pressed" from="Panels/PasswordPanel/ButtonWeak" to="Eevent/Monster" method="_on_button_weak_pressed"]
-[connection signal="pressed" from="Panels/PasswordPanel/ButtonStrong" to="Eevent/Monster" method="_on_button_strong_pressed"]
-[connection signal="pressed" from="Panels/BullyPanel/ButtonL" to="Eevent/BullyMessage" method="_on_button_l_pressed"]
-[connection signal="pressed" from="Panels/BullyPanel/ButtonM" to="Eevent/BullyMessage" method="_on_button_m_pressed"]
-[connection signal="pressed" from="Panels/BullyPanel/ButtonR" to="Eevent/BullyMessage" method="_on_button_r_pressed"]
+[connection signal="body_entered" from="Event/SadKids/SadKid2" to="Event/SadKids/SadKid2" method="_on_body_entered"]
+[connection signal="body_entered" from="Event/SadKids/SadKid10" to="Event/SadKids/SadKid10" method="_on_body_entered"]
+[connection signal="body_entered" from="Event/SadKids/SadKid3" to="Event/SadKids/SadKid3" method="_on_body_entered"]
+[connection signal="body_entered" from="Event/SadKids/SadKid5" to="Event/SadKids/SadKid5" method="_on_body_entered"]
+[connection signal="body_entered" from="Event/SadKids/SadKid6" to="Event/SadKids/SadKid6" method="_on_body_entered"]
+[connection signal="body_entered" from="Event/SadKids/SadKid7" to="Event/SadKids/SadKid7" method="_on_body_entered"]
+[connection signal="body_entered" from="Event/SadKids/SadKid9" to="Event/SadKids/SadKid9" method="_on_body_entered"]
+[connection signal="body_entered" from="Event/SadKids/SadKid8" to="Event/SadKids/SadKid8" method="_on_body_entered"]
+[connection signal="body_entered" from="Event/SadKids/SadKid4" to="Event/SadKids/SadKid4" method="_on_body_entered"]
+[connection signal="body_entered" from="Event/RedSlime" to="Event/RedSlime" method="_on_body_entered"]
+[connection signal="body_entered" from="Event/BullyMessage" to="Event/BullyMessage" method="_on_body_entered"]
+[connection signal="pressed" from="Panels/AttackPanel/AttackButton" to="Event/RedSlime" method="_on_button_pressed"]
+[connection signal="text_submitted" from="Panels/AttackPanel/AttackLineEdit" to="Event/RedSlime" method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="Panels/PasswordPanel/ButtonWeak" to="Event/Monster" method="_on_button_weak_pressed"]
+[connection signal="pressed" from="Panels/PasswordPanel/ButtonStrong" to="Event/Monster" method="_on_button_strong_pressed"]
+[connection signal="pressed" from="Panels/BullyPanel/ButtonL" to="Event/BullyMessage" method="_on_button_l_pressed"]
+[connection signal="pressed" from="Panels/BullyPanel/ButtonM" to="Event/BullyMessage" method="_on_button_m_pressed"]
+[connection signal="pressed" from="Panels/BullyPanel/ButtonR" to="Event/BullyMessage" method="_on_button_r_pressed"]
 [connection signal="pressed" from="Panels/SMSPanel/InviteButton" to="GameManager" method="_on_button_pressed"]
 [connection signal="pressed" from="Panels/GoalPanel/GoalButton" to="GameManager" method="_on_button_pressed"]
