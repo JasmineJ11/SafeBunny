@@ -168,7 +168,6 @@ func show_game_over():
 func _advance_goal_text():
 	goal_step += 1
 	if goal_step == 1:
-
 		goal_label.text = "🛡️ Safety Score: " + str(safety_score) + "\n"
 		goal_label.text += "❤️ Collected: " + str(total_collected) + "\n"
 		goal_label.text += "🎁 Shared: " + str(helped_kid) + "\n"
@@ -176,7 +175,8 @@ func _advance_goal_text():
 		score_label.text = str(final_total_score)
 
 	if goal_step == 2:
-		goal_label.text = "See? The love you shared didn't disappear.🥰🥰\nIt grew and found its way back to you! ❤️❤️"
+		goal_label.text = "See? The love you shared didn't disappear.🥰🥰
+						It grew and found its way back to you! ❤️❤️"
 		# yes.hide()
 		# goal_button.text = "Next"
 		

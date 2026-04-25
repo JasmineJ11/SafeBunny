@@ -45,7 +45,8 @@ func start_scam_event():
 	game_manager.play_notification_sound()
 	yes_button.show()
 	no_button.show()
-	label.text = "🎉 Congratulations! You won €99,999! 💳 Click to claim: www.win-free-99k.top/claim"
+	label.text = "🎉 Congratulations! You won €99,999! 💳 Click to claim: 
+		www.win-free-99k.top/claim"
 
 # --- 3. click YES ---
 # 在编辑器里把 YesButton 的信号连到这个 TreasureChest 脚本上
@@ -102,7 +103,7 @@ func finish_event():
 	chest_panel.hide()
 	chest_panel.modulate = Color.WHITE 
 	
-	is_triggered = false
+	is_triggered = true
 	
 	# 3. 任务完成，断开按钮连接
 	if yes_button.pressed.is_connected(_on_yes_button_pressed):

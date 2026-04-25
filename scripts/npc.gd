@@ -155,10 +155,11 @@ func finish_event(advance_to_next: bool = true):
 	chest_panel.hide()
 	set_player_paused(false)
 	chest_panel.modulate = Color.WHITE 
+	# Go to next event only when choosing the right answer
 	if advance_to_next:
 		game_manager.current_event_index += 1
 	is_triggered = false
-	# 3. 任务完成，断开按钮连接
+	# 3. finish event, disconnect button
 	if yes_button.pressed.is_connected(_on_yes_button_pressed):
 		yes_button.pressed.disconnect(_on_yes_button_pressed)
 	if no_button.pressed.is_connected(_on_no_button_pressed):
