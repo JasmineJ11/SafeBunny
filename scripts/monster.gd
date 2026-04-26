@@ -9,35 +9,33 @@ extends Area2D
 @onready var player: Node = get_parent().get_node_or_null("Player")
 
 
+var is_triggered = false
+# if complete this event
+var password_event_completed = false
+
 func set_player_paused(paused: bool) -> void:
 	if player:
 		player.set("is_paused", paused)
-		
-
-
-var is_triggered = false 
 
 func _ready():
 	password_panel.hide()
 	
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and not is_triggered:
-		# ensure we target the actual player instance that triggered the area
+		if password_event_completed:
+			return # if complete, return
 		player = body
 		is_triggered = true
 		start_pwevent()
 		game_manager.play_notification_sound()
 
-		
 func start_pwevent():
 	password_panel.show()
 	set_player_paused(true)
 	button_weak.show()
 	button_strong.show()
 	password_label.text = "👾 Danger! Someone is attacking your account!
-🔐 Choose a password to protect yourself!"
-
-
+		🔐 Choose a password to protect yourself!"
 
 func _on_button_weak_pressed() -> void:
 	button_weak.hide()
@@ -45,30 +43,28 @@ func _on_button_weak_pressed() -> void:
 	if fail_sound: fail_sound.play()
 	password_panel.modulate = Color(0.977, 0.609, 0.6, 1.0) 
 	password_label.text = "❗ OH NOOO! This password is too week!
-	⚠️ It can be guessed easily!"
+		⚠️ It can be guessed easily!"
 	await get_tree().create_timer(2.5).timeout
 	password_panel.modulate = Color.WHITE
 	password_label.text = "❗ You lose 1 safety point!"
 	await get_tree().create_timer(2).timeout
 	game_manager.sub_Safetypoint()
-	
 	finish_event()
-	
 
 func _on_button_strong_pressed() -> void:
 	button_weak.hide()
 	button_strong.hide()
 	if success_sound: success_sound.play()
-	password_panel.modulate = Color(0.5, 1, 0.5) 
+	password_panel.modulate = Color(0.5, 1, 0.5)
 	password_label.text = "🛡 Strong password created!"
 	await get_tree().create_timer(2.5).timeout
 	password_panel.modulate = Color.WHITE
-	password_label.text = "✨ You protected your information!
-	✨ You got 1 safety point!"
+	password_label.text = "✨ You protected your information!\n✨ You got 1 safety point!"
 	await get_tree().create_timer(2.5).timeout
 	password_label.text = "🐱 Complex and unpredictable passwords are the safest!"
 	await get_tree().create_timer(3).timeout
 	game_manager.add_Safetypoint()
+	password_event_completed = true # once answer right, completed
 	finish_event()
 	
 func finish_event():

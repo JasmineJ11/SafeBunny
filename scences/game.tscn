@@ -517,7 +517,7 @@ position = Vector2(1848, -291)
 script = ExtResource("19_udhis")
 
 [node name="Monster" parent="Event" unique_id=289106508 instance=ExtResource("18_3sylk")]
-position = Vector2(2486, -66)
+position = Vector2(135, -12)
 
 [node name="Player" parent="." unique_id=1193462206 instance=ExtResource("1_lbs7c")]
 position = Vector2(33, 32)
