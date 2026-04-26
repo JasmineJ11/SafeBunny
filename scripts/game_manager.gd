@@ -97,9 +97,8 @@ func _advance_invite_text():
 			invite_label.text = "Please tell me your name."
 			return
 		player_name = typed_name
-		SaveManager.set_active_player_name(player_name) # 存本地
-		#
-		print(SaveManager.get_active_player_name())
+		SaveManager.data[player_name] = 0.0 # 存本地
+		print(SaveManager.data.has(player_name))
 		name_line_edit.hide()
 		waiting_for_name = false
 
@@ -134,7 +133,8 @@ var goal_step = 0
 
 
 
-
+func _get_composite_score(total: int, safety: int) -> float:
+	return float(total) * 0.5 + float(safety) * 0.5
 
 
 
@@ -146,15 +146,6 @@ func show_game_over():
 	goal_label.text += "🥰 But what you did along the way matters.\n\n"
 	final_total_score = total_collected + helped_kid
 
-	var current_name := SaveManager.get_active_player_name()
-	if not current_name.is_empty():
-		SaveManager.record_result(
-			current_name,
-			final_total_score,
-			safety_score,
-			helped_kid,
-			total_collected
-		)
 	
 	goal_step = 0
 	if goal_button.pressed.is_connected(_advance_goal_text):
@@ -181,16 +172,15 @@ func _advance_goal_text():
 		# goal_button.text = "Next"
 		
 	if goal_step == 3:
-		var current_name := SaveManager.get_active_player_name()
-		var best := SaveManager._get_personal_best(current_name)
+		var composite_score = _get_composite_score(final_total_score, safety_score)
+		
 		goal_label.text = "Leaderboard (Top 5) 🏆 \n"
 		goal_label.text += "Composite = Hearts x 50% + Safety x 50%\n"
-		goal_label.text += SaveManager._build_leaderboard_text(5)
+		SaveManager.update_score(player_name, composite_score)
+		goal_label.text += SaveManager._build_leaderboard_text()
 		goal_label.text += "\n\n"
-		if current_name.is_empty():
-			goal_label.text += "⭐ Personal Best: Please enter your name at start."
-		else:
-			goal_label.text += "⭐ " + current_name + " Personal Best: " + ("%.1f" % best)
+		
+		goal_label.text += "⭐ " + player_name + " Personal Best: " + ("%.1f" % SaveManager.data[player_name])
 	
 		yes.hide()
 		goal_button.text = "Play Again"
