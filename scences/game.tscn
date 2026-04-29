@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bhpul6mlbqwy8" path="res://assets/sprites/lift_button.png" id="1_1aelx"]
 [ext_resource type="Texture2D" uid="uid://w717su16w8g3" path="res://assets/sprites/heartpanel.tres" id="1_a0bl5"]
 [ext_resource type="PackedScene" uid="uid://dlslmagsuk3xq" path="res://scences/player.tscn" id="1_lbs7c"]
+[ext_resource type="Texture2D" uid="uid://duj2m5faeg7pq" path="res://assets/sprites/lift_button2.png" id="2_65y2b"]
 [ext_resource type="Texture2D" uid="uid://dtdncmd6dus80" path="res://assets/sprites/world_tileset.png" id="2_jx3ei"]
 [ext_resource type="FontFile" uid="uid://cuhjqidghnmi2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_lvua1"]
 [ext_resource type="Texture2D" uid="uid://dp0vxcrpngto1" path="res://assets/sprites/right_button.png" id="2_wwdxm"]
@@ -10,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://c5mlhavxl1xkw" path="res://scences/platform.tscn" id="3_xfuu6"]
 [ext_resource type="PackedScene" uid="uid://bc3x3xjbt17m2" path="res://scences/npc.tscn" id="4_4h201"]
 [ext_resource type="PackedScene" uid="uid://fxfqxn8xqpji" path="res://scences/coin.tscn" id="4_cfxbr"]
+[ext_resource type="Texture2D" uid="uid://cpkgcr12k3rfh" path="res://assets/sprites/right_button2.png" id="4_cnb75"]
+[ext_resource type="Texture2D" uid="uid://d2xha27j4o5cq" path="res://assets/sprites/jump_button2.png" id="4_vkv5e"]
 [ext_resource type="PackedScene" uid="uid://b56mfdkim1gbm" path="res://scences/killzone.tscn" id="5_b174u"]
 [ext_resource type="PackedScene" uid="uid://f0ft3ft1vw76" path="res://scences/slime.tscn" id="6_yru2q"]
 [ext_resource type="FontFile" uid="uid://jgv88f60q8tg" path="res://assets/fonts/PixelOperator8.ttf" id="7_cho2i"]
@@ -26,18 +29,6 @@
 [ext_resource type="PackedScene" uid="uid://dtf1bidnsxl4b" path="res://scences/sad_kid.tscn" id="20_udhis"]
 [ext_resource type="PackedScene" uid="uid://faprxuk2d2e" path="res://scences/goal.tscn" id="22_4h201"]
 [ext_resource type="PackedScene" uid="uid://bufjn2npg1vin" path="res://scences/check_point.tscn" id="23_s3man"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mecj8"]
-atlas = ExtResource("1_1aelx")
-region = Rect2(16, 23, 46, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_65y2b"]
-atlas = ExtResource("2_wwdxm")
-region = Rect2(18, 23, 46, 34)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wwdxm"]
-atlas = ExtResource("3_vkv5e")
-region = Rect2(23, 15, 34, 47)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b174u"]
 texture = ExtResource("2_jx3ei")
@@ -410,9 +401,9 @@ mouse_filter = 1
 [node name="Left" type="TouchScreenButton" parent="MobileControls/Control" unique_id=801734541]
 texture_filter = 1
 position = Vector2(16, 459)
-scale = Vector2(1.3125, 1.3125)
+scale = Vector2(1.313, 1.313)
 texture_normal = ExtResource("1_1aelx")
-texture_pressed = SubResource("AtlasTexture_mecj8")
+texture_pressed = ExtResource("2_65y2b")
 passby_press = true
 action = "move_left"
 
@@ -421,7 +412,7 @@ texture_filter = 1
 position = Vector2(143, 459)
 scale = Vector2(1.3125, 1.3125)
 texture_normal = ExtResource("2_wwdxm")
-texture_pressed = SubResource("AtlasTexture_65y2b")
+texture_pressed = ExtResource("4_cnb75")
 passby_press = true
 action = "move_right"
 
@@ -429,7 +420,7 @@ action = "move_right"
 position = Vector2(956.0001, 459)
 scale = Vector2(1.313, 1.313)
 texture_normal = ExtResource("3_vkv5e")
-texture_pressed = SubResource("AtlasTexture_wwdxm")
+texture_pressed = ExtResource("4_vkv5e")
 action = "jump"
 
 [node name="TileMapLayer_background" type="TileMapLayer" parent="." unique_id=961370362]

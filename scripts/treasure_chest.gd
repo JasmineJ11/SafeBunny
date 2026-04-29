@@ -17,7 +17,6 @@ extends Area2D
 var is_triggered = false 
 
 func _ready():
-	# 关键：游戏开始时，强制隐藏面板，防止它一开始就挡住屏幕 hide from begining
 	chest_panel.hide()
 
 # --- 1. player touch the chest ---

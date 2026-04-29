@@ -142,7 +142,7 @@ func _on_no_button_pressed():
 	await get_tree().create_timer(3.0).timeout
 	chest_panel.modulate = Color.WHITE 
 	
-	label.text = "🛡️ You got 1 safety point！"
+	label.text = "🛡️ You got 1 safety point!"
 	await get_tree().create_timer(2.0).timeout
 	
 	if data["no_score"] > 0: game_manager.add_Safetypoint()
