@@ -1,6 +1,5 @@
 extends Area2D
 
-
 @onready var bully_panel: Panel = %BullyPanel
 @onready var bully_label: Label = %BullyLabel
 @onready var btn_l: Button = %ButtonL
@@ -52,15 +51,12 @@ var is_triggered = false
 func _ready():
 	bully_panel.hide()
 
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and not is_triggered:
 		is_triggered = true
 		current_round = 0
 		show_round()
 		game_manager.play_notification_sound()
-		
-
 
 func show_round():
 	bully_panel.show()
@@ -68,39 +64,36 @@ func show_round():
 	bully_label.text = data["text"]
 	
 	if current_round == 0:
-		# 开场只显示第一个按钮
+		# show only one button in the begining
 		btn_l.show(); btn_r.hide(); btn_m.hide()
 		btn_l.text = data["options"][0]
 	else:
-		# 正式环节显示三个按钮
+		# show three buttons
 		btn_l.show(); btn_m.show(); btn_r.show()
 		btn_l.text = data["options"][0]
 		btn_m.text = data["options"][1]
 		btn_r.text = data["options"][2]
 		
-		
-# ---  信号连接 ---
+# ---  connect signal first ---
 func _on_button_l_pressed(): _on_button_pressed(0)
 func _on_button_m_pressed(): _on_button_pressed(1)
 func _on_button_r_pressed(): _on_button_pressed(2)
 
-# --- 5. 按钮点击统一处理 ---
+# --- handle button pressed ---
 func _on_button_pressed(index: int):
 	var data = dialogue_data[current_round]
 	
-	# 开场
 	if current_round == 0:
 		current_round = 1
 		show_round()
 		return
 	
-	# 正式判断
 	if index == data["correct"]:
 		handle_correct()
 	else:
 		handle_wrong(index)
 
-# --- 正确 ---
+# --- handle correct choice ---
 func handle_correct():
 	if success_sound: success_sound.play()
 	bully_label.text = "🚨 This is online harassment!
@@ -115,7 +108,7 @@ func handle_correct():
 	else:
 		finish_event()
 
-# --- 错误 ---
+# --- handle wrong choice ---
 func handle_wrong(index: int):
 	if fail_sound: fail_sound.play()
 	hide_buttons()
@@ -128,7 +121,7 @@ func handle_wrong(index: int):
 	game_manager.sub_Safetypoint()
 	
 	await get_tree().create_timer(1.5).timeout
-	show_round() # 循环：让玩家重新选这一轮
+	show_round() # loop, play again
 
 func hide_buttons():
 	btn_l.hide(); btn_m.hide(); btn_r.hide()
@@ -140,6 +133,3 @@ func finish_event():
 	await get_tree().create_timer(4).timeout
 	bully_panel.hide()
 	is_triggered = true
-
-
-	

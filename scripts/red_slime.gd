@@ -8,30 +8,14 @@ extends Area2D
 @onready var wrong: AudioStreamPlayer = $wrong
 @onready var game_manager: Node = %GameManager
 
-
-
-
 var is_triggered = false
-#var password: String
 var monster_hp = 4
-#var is_active = false
 var player: Node2D = null
-
 
 func _ready():
 	line_edit.hide()
 	attack_panel.hide()
 	
-#
-
-#func _input(event):
-	#if is_active:
-		#if event is InputEventKey and event.is_pressed() and event.is_echo() == false:
-			#var code = DisplayServer.keyboard_get_keycode_from_physical(event.physical_keycode)
-			#if (code & KEY_SPECIAL) == 0:
-				#password += (OS.get_keycode_string(code))
-				##print(password)
-		
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and not is_triggered:
 		player = body
@@ -40,7 +24,6 @@ func _on_body_entered(body: Node2D) -> void:
 		attack_label.text = "⚠️ The monster is attacking you!
 		Set your password to defend yourself!"
 		body.is_paused = true
-		
 
 func _on_button_pressed() -> void:
 	button.hide()
@@ -48,7 +31,6 @@ func _on_button_pressed() -> void:
 	A strong password should include:
 	⚠️Numbers\n⚠️Upper case\n⚠️Lower case\n⚠️Special characters\n"
 	line_edit.show()
-	#is_active = true;
 
 func _on_line_edit_text_submitted(password: String) -> void:
 	var score = 0
@@ -101,6 +83,3 @@ func reset_panel():
 	line_edit.show()    
 	line_edit.grab_focus() 
 	is_triggered = false
-	
-
-#//////////////////////////////////////////////////////////////

@@ -14,12 +14,7 @@ func _ready():
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and not is_happy:
 		love_button.show()
-
-		# connect to signal
-		if love_button.pressed.is_connected(_on_love_button_pressed):
-			love_button.pressed.disconnect(_on_love_button_pressed)
 		love_button.pressed.connect(_on_love_button_pressed)
-
 		await get_tree().create_timer(2.5).timeout
 		love_button.hide()
 
@@ -32,8 +27,3 @@ func _on_love_button_pressed() -> void:
 	if confetti_particles:
 		confetti_particles.restart()
 	game_manager.give_heart_to_kid()
-	
-	
-
-		
-	

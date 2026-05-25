@@ -8,7 +8,6 @@ extends Area2D
 @onready var game_manager: Node = %GameManager
 @onready var player: Node = get_parent().get_node_or_null("Player")
 
-
 var is_triggered = false
 # if complete this event
 var password_event_completed = false

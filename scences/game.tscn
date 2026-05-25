@@ -867,6 +867,7 @@ position = Vector2(583, 31)
 [node name="Labels" type="Node" parent="." unique_id=1490029344]
 
 [node name="Label" type="Label" parent="Labels" unique_id=490420532]
+visible = false
 offset_left = -79.0
 offset_top = 8.0
 offset_right = 9.0
@@ -955,7 +956,6 @@ autowrap_mode = 2
 
 [node name="AttackPanel" type="Panel" parent="Panels" unique_id=1090016136]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1013,7 +1013,6 @@ placeholder_text = "Enter Password: "
 
 [node name="ChestPanel" type="Panel" parent="Panels" unique_id=258346170]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1079,7 +1078,6 @@ script = ExtResource("13_cxnw8")
 
 [node name="PasswordPanel" type="Panel" parent="Panels" unique_id=29736009]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1130,7 +1128,6 @@ flat = true
 
 [node name="BullyPanel" type="Panel" parent="Panels" unique_id=831553504]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1297,7 +1294,6 @@ script = ExtResource("13_cxnw8")
 
 [node name="LoveButton" type="Button" parent="Panels" unique_id=1390794964]
 unique_name_in_owner = true
-visible = false
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.67

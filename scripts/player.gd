@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	if is_paused:
 		direction = 0
 	
-	# 翻转人物方向
+	# flip play direction
 	if direction > 0:
 		animated_sprite.flip_h = false;
 	elif direction < 0:

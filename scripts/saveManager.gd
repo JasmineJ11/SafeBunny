@@ -5,11 +5,6 @@ const SAVE_PATH := "user://save_data.json"
 var data: Dictionary = {}
 func _ready() -> void:
 	load_data()
-	# reset_data()
-
-# func reset_data():
-# 	data = _default_data()
-# 	save_data()
 
 # load from file
 func load_data() -> Dictionary:

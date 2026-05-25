@@ -12,6 +12,7 @@ extends Node
 @onready var yes: TextureRect = %Yes
 @onready var player: Node = get_parent().get_node_or_null("Player")
 
+
 var score = 0 				# hearts collected
 var helped_kid = 0			# hearts given to others
 var safety_score = 0		# cybersecurity decision score
@@ -26,7 +27,6 @@ var final_total_score = 0
 func set_player_paused(paused: bool) -> void:
 	if player:
 		player.set("is_paused", paused)
-
 
 func _ready():
 	sms_panel.hide()
@@ -69,9 +69,6 @@ func give_heart_to_kid():
 	update_score()     
 
 #======================================================
-
-
-
 func show_invitation():
 	sms_panel.show()
 	name_line_edit.hide()
@@ -97,7 +94,7 @@ func _advance_invite_text():
 			invite_label.text = "Please tell me your name."
 			return
 		player_name = typed_name
-		SaveManager.data[player_name] = 0.0 # 存本地
+		SaveManager.data[player_name] = 0.0 # save local
 		print(SaveManager.data.has(player_name))
 		name_line_edit.hide()
 		waiting_for_name = false
@@ -118,7 +115,7 @@ func _advance_invite_text():
 	
 		invite_button.pressed.connect(_on_invite_button_pressed)
 	
-# 点击确认后隐藏邀请面板
+# after click, hide panel
 func _on_invite_button_pressed():
 	sms_panel.hide()
 	set_player_paused(false)
@@ -127,17 +124,11 @@ func play_notification_sound():
 	if notification_sound:
 		notification_sound.play()
 
- 
 #======================================================
 var goal_step = 0
 
-
-
 func _get_composite_score(total: int, safety: int) -> float:
 	return float(total) * 0.5 + float(safety) * 0.5
-
-
-
 
 func show_game_over():
 	goal_panel.show()
@@ -145,7 +136,6 @@ func show_game_over():
 	goal_label.text = "🌙 The journey is over...\n"
 	goal_label.text += "🥰 But what you did along the way matters.\n\n"
 	final_total_score = total_collected + helped_kid
-
 	
 	goal_step = 0
 	if goal_button.pressed.is_connected(_advance_goal_text):
@@ -190,8 +180,6 @@ func _advance_goal_text():
 			goal_button.pressed.connect(_on_restart_button_pressed)
 		
 
-# 2. 添加重新开始的函数
+# restart game
 func _on_restart_button_pressed():
-	get_tree().reload_current_scene() # 重新加载当前场景
-	
-	
+	get_tree().reload_current_scene() # restart scene

@@ -8,10 +8,7 @@ extends Area2D
 func _ready():
 	goal_panel.hide()
 
-
 func _on_body_entered(body):
 	if body.name == "Player":
-		# 触发 GameManager 里的胜利函数
 		%GameManager.show_game_over()
 		goal_sound.play()
-	

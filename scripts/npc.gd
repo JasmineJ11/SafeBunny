@@ -1,19 +1,14 @@
 extends Area2D
 
-
 @onready var chest_panel: Panel = %ChestPanel
-
 @onready var label = chest_panel.get_node("%ChestLabel") 
 @onready var blur_bg = chest_panel.get_node_or_null("%BlurBackground")
 @onready var game_manager: Node = %GameManager
-
 @onready var success_sound: AudioStreamPlayer2D = $SuccessSound
 @onready var fail_sound: AudioStreamPlayer2D = $FailSound
-
 @onready var yes_button: Button = %YesButton
 @onready var no_button: Button = %NoButton
 @onready var player: Node = get_parent().get_node_or_null("Player")
-
 
 func set_player_paused(paused: bool) -> void:
 	if player:
@@ -62,7 +57,7 @@ var event_data = [
 var is_triggered = false 
 
 func _ready():
-	# 关键：游戏开始时，强制隐藏面板，防止它一开始就挡住屏幕 hide from begining
+	# hide panel from begining
 	chest_panel.hide()
 
 # --- 1. player touch the chest ---
@@ -70,7 +65,7 @@ func _on_body_entered(body):
 	
 	if body.name == "Player" and not is_triggered:
 		player = body
-		# 检查是否还有对话可以进行
+		# check has more event
 		if game_manager.current_event_index < event_data.size():
 			is_triggered = true
 			start_npc_event(game_manager.current_event_index)
@@ -80,7 +75,6 @@ func _on_body_entered(body):
 			label.text = "Have a nice day ^^☀️😎"
 			await get_tree().create_timer(2.5).timeout
 			chest_panel.hide()
-			
 
 # --- 2. start the window ---
 func start_npc_event(index):
@@ -90,22 +84,15 @@ func start_npc_event(index):
 	yes_button.show()
 	no_button.show()
 	
-		# 如果已经连了，先断开（防止双重连接）
 	if yes_button.pressed.is_connected(_on_yes_button_pressed):
 		yes_button.pressed.disconnect(_on_yes_button_pressed)
 	if no_button.pressed.is_connected(_on_no_button_pressed):
 		no_button.pressed.disconnect(_on_no_button_pressed)
-		
-	# 现在只连这一个脚本的函数
 	yes_button.pressed.connect(_on_yes_button_pressed)
 	no_button.pressed.connect(_on_no_button_pressed)
 	
 	game_manager.play_notification_sound()
-	
 	label.text = data["question"]
-	
-	
-
 
 # --- 3. click YES ---
 func _on_yes_button_pressed():
@@ -164,4 +151,3 @@ func finish_event(advance_to_next: bool = true):
 		yes_button.pressed.disconnect(_on_yes_button_pressed)
 	if no_button.pressed.is_connected(_on_no_button_pressed):
 		no_button.pressed.disconnect(_on_no_button_pressed)
-	
