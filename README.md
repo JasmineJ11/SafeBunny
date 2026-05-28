@@ -8,6 +8,12 @@ Bachelor's Thesis project · HAMK University of Applied Sciences · 2026
 
 ---
 
+## Demo
+
+https://github.com/user-attachments/assets/13eea050-aa0c-4434-a6a3-523f73086ec3
+
+---
+
 ## Theory
 
 The theoretical part of reviewed children needs and risks about their cybersecurity and the limits of the present educational approaches. It was based on the theory of gamification, the theory of experiential learning and the positive feedback loop to build a design. Five content dimensions were derived.
