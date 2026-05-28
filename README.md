@@ -5,6 +5,8 @@ A scenario-driven 2D Android platformer that teaches children aged 6–12 to sta
 Bachelor's Thesis project · HAMK University of Applied Sciences · 2026
 
 > **Status:** Currently in closed testing on Google Play (Alpha). Access requires an invite.
+>
+> **Download:** [v1.0.0-alpha APK](https://github.com/JasmineJ11/SafeCat/releases/tag/v1.0.0-alpha)
 
 ---
 
